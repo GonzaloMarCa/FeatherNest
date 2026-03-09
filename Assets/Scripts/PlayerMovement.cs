@@ -11,6 +11,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("Referencias")]
     private Rigidbody2D rb;
     private Animator animator;
+    public Transform hijoVisual;
+
+    [Header("Suavizado de animación")]
+    public float suavizadoAnimacion = 0.1f;
+    
+    private Animator animatorHijo;
+    private Rigidbody2D rb;
+    private Vector2 movimiento;
+    private Vector2 suavizadoMovimiento;
+    private Vector2 velocidadSuavizado;
     
     // Variables de estado
     private Vector2 movementInput;
@@ -18,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private float dashTime;
     private float dashCooldownTime;
+
     
     void Start()
     {
@@ -115,21 +126,18 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
     
-    /* Falta meter animaciones
+    // Falta meter animaciones
     void UpdateAnimations()
     {
         if (animator != null)
         {
-            // Actualizar parámetros de animación
-            animator.SetFloat("MoveX", movementInput.x);
-            animator.SetFloat("MoveY", movementInput.y);
-            animator.SetFloat("LastMoveX", lastMoveDirection.x);
-            animator.SetFloat("LastMoveY", lastMoveDirection.y);
-            animator.SetBool("IsMoving", movementInput != Vector2.zero);
-            animator.SetBool("IsDashing", isDashing);
+            if(lastMoveDirection == new Vector2(0,1))
+            {
+                
+            }        
         }
     }
-    */
+    
     
     //Recoger dirección para hacer ataques o dash
     public Vector2 GetFacingDirection()
