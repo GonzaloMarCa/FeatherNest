@@ -11,6 +11,18 @@ public class PlayerMovement : MonoBehaviour
     [Header("Referencias")]
     private Rigidbody2D rb;
     private Animator animator;
+<<<<<<< Updated upstream
+=======
+    public Transform hijoVisual;
+
+    [Header("Suavizado de animación")]
+    public float suavizadoAnimacion = 0.1f;
+    
+    private Animator animatorHijo;
+    private Vector2 movimiento;
+    private Vector2 suavizadoMovimiento;
+    private Vector2 velocidadSuavizado;
+>>>>>>> Stashed changes
     
     // Variables de estado
     private Vector2 movementInput;
