@@ -15,9 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Suavizado de animación")]
     public float suavizadoAnimacion = 0.1f;
-    
-    private Animator animatorHijo;
-    private Rigidbody2D rb;
     private Vector2 movimiento;
     private Vector2 suavizadoMovimiento;
     private Vector2 velocidadSuavizado;
@@ -33,7 +30,11 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = hijoVisual.GetComponent<Animator>();
+        if(animator == null) 
+        {
+            Debug.LogError("El hijo no posee un componente Animator");
+        }
         
         // Dirección inicial por defecto
         lastMoveDirection = Vector2.down;
@@ -51,6 +52,11 @@ public class PlayerMovement : MonoBehaviour
             // Normalizar para movimiento diagonal uniforme
             movementInput = movementInput.normalized;
             
+
+            //Pasamos parámetros de movimiento al animator
+            animator.SetFloat("Horizontal", movementInput.x);
+            animator.SetFloat("Vertical", movementInput.y);
+
             // Guardar última dirección de movimiento si se está moviendo
             if (movementInput != Vector2.zero)
             {
@@ -129,12 +135,10 @@ public class PlayerMovement : MonoBehaviour
     // Falta meter animaciones
     void UpdateAnimations()
     {
-        if (animator != null)
+        if(rb.velocity == new Vector2(0, 0))
         {
-            if(lastMoveDirection == new Vector2(0,1))
-            {
-                
-            }        
+            animator.SetFloat("Horizontal", lastMoveDirection.x);
+            animator.SetFloat("Vertical", lastMoveDirection.y);
         }
     }
     
