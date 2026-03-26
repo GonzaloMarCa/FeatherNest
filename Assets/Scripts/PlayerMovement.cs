@@ -13,11 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     public Transform hijoVisual;
 
-    [Header("Suavizado de animación")]
-    public float suavizadoAnimacion = 0.1f;
-    private Vector2 movimiento;
-    private Vector2 suavizadoMovimiento;
-    private Vector2 velocidadSuavizado;
     
     // Variables de estado
     private Vector2 movementInput;
@@ -51,11 +46,7 @@ public class PlayerMovement : MonoBehaviour
             
             // Normalizar para movimiento diagonal uniforme
             movementInput = movementInput.normalized;
-            
 
-            //Pasamos parámetros de movimiento al animator
-            animator.SetFloat("Horizontal", movementInput.x);
-            animator.SetFloat("Vertical", movementInput.y);
 
             // Guardar última dirección de movimiento si se está moviendo
             if (movementInput != Vector2.zero)
@@ -86,8 +77,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
-        // Actualizar animaciones (falta meter las animaciones)
-        //UpdateAnimations();
+        // Actualizar animaciones
+        UpdateAnimations();
     }
     
     void FixedUpdate()
@@ -112,11 +103,12 @@ public class PlayerMovement : MonoBehaviour
         // Poner invuln
         // gameObject.layer = LayerMask.NameToLayer("Invulnerable");
         
-        // Efecto visual simple (opcional)
+        /* Efecto visual simple (opcional)
         if (animator != null)
         {
             animator.SetTrigger("Dash");
         }
+        */
         
         Debug.Log("¡Dash iniciado en dirección: " + lastMoveDirection);
     }
@@ -132,13 +124,28 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
     
-    // Falta meter animaciones
-    void UpdateAnimations()
+    
+   void UpdateAnimations()
     {
-        if(rb.velocity == new Vector2(0, 0))
+        float velocidadActual = movementInput.magnitude;
+        
+        if (velocidadActual > 0.1f)
         {
-            animator.SetFloat("Horizontal", lastMoveDirection.x);
-            animator.SetFloat("Vertical", lastMoveDirection.y);
+        
+            animator.SetFloat("Horizontal_Idle", 0);
+            animator.SetFloat("Vertical_Idle", 0);
+            animator.SetFloat("Velocidad", 1);
+            animator.SetFloat("Horizontal", movementInput.x);
+            animator.SetFloat("Vertical", movementInput.y);
+        }
+        else
+        {
+            Debug.Log(GetFacingDirection());
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Velocidad", 0);
+            animator.SetFloat("Horizontal_Idle", GetFacingDirection().x);
+            animator.SetFloat("Vertical_Idle", GetFacingDirection().y);
         }
     }
     
