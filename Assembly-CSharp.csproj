@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\EntidadesNPC\Mabirro.cs" />
+    <Compile Include="Assets\Scripts\Escena\Generador.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
