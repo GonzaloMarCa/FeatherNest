@@ -21,7 +21,7 @@ public class Mabirro : MonoBehaviour
     [Header("Variables de Estado")]
     private Vector2 currentDirection;
     private float directionTimer;
-    private bool isChasing = false;
+
     
     void Start()
     {
@@ -37,12 +37,7 @@ public class Mabirro : MonoBehaviour
         ChangeRandomDirection();
         directionTimer = changeDirectionInterval;
         
-        if (animator != null)
-        {
-            animator.SetFloat("Horizontal", currentDirection.x);
-            animator.SetFloat("Vertical", currentDirection.y);
-            animator.SetBool("IsMoving", true);
-        }
+    
     }
     
     void Update()
@@ -51,12 +46,10 @@ public class Mabirro : MonoBehaviour
         
         if (playerDetected)
         {
-            isChasing = true;
             MoveTowardsPlayerWithAvoidance();
         }
         else
         {
-            isChasing = false;
             WanderMovementWithAvoidance();
         }
         
@@ -66,6 +59,7 @@ public class Mabirro : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = currentDirection * moveSpeed;
+        Debug.Log(currentDirection.x);
     }
     
     bool IsPlayerDetected()
@@ -148,39 +142,23 @@ public class Mabirro : MonoBehaviour
         currentDirection = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), 
                                         Mathf.Sin(angle * Mathf.Deg2Rad)).normalized;
         
-        // 8 direcciones fijas:
-        /*
-        int directionChoice = Random.Range(0, 8);
-        switch (directionChoice)
-        {
-            case 0: currentDirection = Vector2.up; break;
-            case 1: currentDirection = Vector2.down; break;
-            case 2: currentDirection = Vector2.left; break;
-            case 3: currentDirection = Vector2.right; break;
-            case 4: currentDirection = new Vector2(1, 1).normalized; break;
-            case 5: currentDirection = new Vector2(1, -1).normalized; break;
-            case 6: currentDirection = new Vector2(-1, 1).normalized; break;
-            case 7: currentDirection = new Vector2(-1, -1).normalized; break;
-        }
-        */
+    
     }
     
     void UpdateAnimations()
     {
         if (animator == null) return;
         
-        if (currentDirection.magnitude > 0.1f)
+        if (currentDirection.x < 0.5f)
         {
-            animator.SetFloat("Horizontal", currentDirection.x);
-            animator.SetFloat("Vertical", currentDirection.y);
-            animator.SetBool("IsMoving", true);
+            animator.SetFloat("Direction", -1);
         }
         else
         {
-            animator.SetBool("IsMoving", false);
+            animator.SetFloat("Direction", 1);
         }
         
-        animator.SetBool("IsChasing", isChasing);
+        
     }
     
     void OnCollisionEnter2D(Collision2D collision)
