@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,11 +9,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashDuration = 0.25f;
     [SerializeField] private float dashCooldown = 0.5f;
     
+    [Header("Ataque")]
+    [SerializeField] private float attackDuration = 0.3f;
+    [SerializeField] private float attackCooldown = 0.5f;
+    [SerializeField] private Transform attackPoint; // Punto desde donde se genera el ataque
+    [SerializeField] private float attackRange = 1f; // Rango del ataque
+    [SerializeField] private LayerMask enemyLayers; // Capas que puede dañar
+    [SerializeField] private int attackDamage = 1; // Daño del ataque
+    
     [Header("Referencias")]
     private Rigidbody2D rb;
     private Animator animator;
     public Transform hijoVisual;
 
+    [Header("Salud del Jugador")]
+    [SerializeField] private int maxHealth = 5;
+    private int currentHealth;
     
     // Variables de estado
     private Vector2 movementInput;
@@ -20,15 +32,31 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private float dashTime;
     private float dashCooldownTime;
-
+    
+    // Variables de ataque
+    private bool isAttacking = false;
+    private float attackTimer;
+    private float attackCooldownTimer;
+    private bool canAttack = true;
     
     void Start()
     {
+
+        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         animator = hijoVisual.GetComponent<Animator>();
         if(animator == null) 
         {
             Debug.LogError("El hijo no posee un componente Animator");
+        }
+        
+        // Crear attackPoint si no existe
+        if (attackPoint == null)
+        {
+            GameObject attackPointObj = new GameObject("AttackPoint");
+            attackPointObj.transform.parent = transform;
+            attackPointObj.transform.localPosition = Vector3.zero;
+            attackPoint = attackPointObj.transform;
         }
         
         // Dirección inicial por defecto
@@ -37,27 +65,36 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        // Solo procesar input si no está en dash
-        if (!isDashing)
+        // Manejar el temporizador del ataque
+        HandleAttackTimers();
+        
+        // Solo procesar input si no está en dash ni atacando
+        if (!isDashing && !isAttacking)
         {
             // Obtener input de movimiento
             movementInput.x = Input.GetAxisRaw("Horizontal");
             movementInput.y = Input.GetAxisRaw("Vertical");
             
             // Normalizar para movimiento diagonal uniforme
-            movementInput = movementInput.normalized;
-
-
+            if (movementInput.magnitude > 1f)
+                movementInput = movementInput.normalized;
+            
             // Guardar última dirección de movimiento si se está moviendo
             if (movementInput != Vector2.zero)
             {
                 lastMoveDirection = movementInput;
             }
             
-            // Inicio dash
+            // Inicio dash (solo si no está atacando)
             if (Input.GetKeyDown(KeyCode.Space) && dashCooldownTime <= 0)
             {
                 StartDash();
+            }
+            
+            // Inicio ataque
+            if (Input.GetMouseButtonDown(0) && canAttack) // Click izquierdo para atacar
+            {
+                StartAttack();
             }
         }
         
@@ -79,23 +116,152 @@ public class PlayerMovement : MonoBehaviour
         
         // Actualizar animaciones
         UpdateAnimations();
+        
+        // Actualizar posición del punto de ataque según la dirección
+        UpdateAttackPointPosition();
     }
     
     void FixedUpdate()
     {
-        if (isDashing)
+        // Solo mover si no está atacando
+        if (!isAttacking)
         {
-            // Movimiento rápido durante el dash
-            rb.velocity = lastMoveDirection * dashSpeed;
+            if (isDashing)
+            {
+                // Movimiento rápido durante el dash
+                rb.velocity = lastMoveDirection * dashSpeed;
+            }
+            else
+            {
+                // Movimiento normal
+                rb.velocity = movementInput * moveSpeed;
+            }
         }
         else
         {
-            // Movimiento normal
-            rb.velocity = movementInput * moveSpeed;
+            // Detener movimiento durante el ataque
+            rb.velocity = Vector2.zero;
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        if (isDashing)
+        {
+            // Si está dash, no recibe daño (invulnerabilidad)
+            Debug.Log("¡Dash! Invulnerable al daño");
+            return;
+        }
+        
+        currentHealth -= damage;
+        Debug.Log($"Jugador recibió {damage} de daño. Salud: {currentHealth}/{maxHealth}");
+        
+        // Efecto visual de daño
+        StartCoroutine(FlashRed());
+        
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    IEnumerator FlashRed()
+    {
+        SpriteRenderer sr = hijoVisual.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            Color originalColor = sr.color;
+            sr.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            sr.color = originalColor;
+        }
+    }
+    
+    void HandleAttackTimers()
+    {
+        // Temporizador de duración del ataque
+        if (isAttacking)
+        {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0)
+            {
+                isAttacking = false;
+            }
+        }
+        
+        // Temporizador de cooldown del ataque
+        if (!canAttack)
+        {
+            attackCooldownTimer -= Time.deltaTime;
+            if (attackCooldownTimer <= 0)
+            {
+                canAttack = true;
+            }
+        }
+    }
+    
+    void StartAttack()
+    {
+        isAttacking = true;
+        canAttack = false;
+        attackTimer = attackDuration;
+        attackCooldownTimer = attackCooldown;
+        
+        // Realizar el daño
+        PerformAttack();
+        
+        // Activar animación de ataque
+        if (animator != null)
+        {
+            animator.SetTrigger("Attack");
+            // Pasar la dirección del ataque para la animación
+            animator.SetFloat("AttackHorizontal", lastMoveDirection.x);
+            animator.SetFloat("AttackVertical", lastMoveDirection.y);
+        }
+        
+        Debug.Log("¡Ataque realizado en dirección: " + lastMoveDirection);
+    }
+    
+void PerformAttack()
+{
+    // Detectar enemigos en el rango de ataque
+    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+    
+    // Dañar a los enemigos
+    foreach (Collider2D enemy in hitEnemies)
+    {
+        // Cambia esto:
+        // EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+        
+        // Por esto:
+        Mabirro enemyScript = enemy.GetComponent<Mabirro>();
+        
+        if (enemyScript != null)
+        {
+            enemyScript.TakeDamage(attackDamage);
+            Debug.Log("Enemigo golpeado: " + enemy.name);
+        }
+    }
+}
+    
+    void UpdateAttackPointPosition()
+    {
+        if (attackPoint == null) return;
+        
+        // Posicionar el punto de ataque según la dirección del jugador
+        float offsetDistance = 0.4f; // Distancia desde el centro del jugador
+        attackPoint.localPosition = new Vector3(
+            lastMoveDirection.x * offsetDistance,
+            lastMoveDirection.y * offsetDistance,
+            0
+        );
+    }
+    
     void StartDash()
     {
+        // No se puede hacer dash mientras se ataca
+        if (isAttacking) return;
+        
         isDashing = true;
         dashTime = dashDuration;
         dashCooldownTime = dashCooldown;
@@ -103,12 +269,11 @@ public class PlayerMovement : MonoBehaviour
         // Poner invuln
         // gameObject.layer = LayerMask.NameToLayer("Invulnerable");
         
-        /* Efecto visual simple (opcional)
+        // Efecto visual simple (opcional)
         if (animator != null)
         {
             animator.SetTrigger("Dash");
         }
-        */
         
         Debug.Log("¡Dash iniciado en dirección: " + lastMoveDirection);
     }
@@ -124,14 +289,19 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
     
-    
-   void UpdateAnimations()
+    void UpdateAnimations()
     {
         float velocidadActual = movementInput.magnitude;
         
+        // No actualizar animaciones de movimiento durante el ataque
+        if (isAttacking)
+        {
+            // Mantener la dirección del ataque durante la animación
+            return;
+        }
+        
         if (velocidadActual > 0.1f)
         {
-        
             animator.SetFloat("Horizontal_Idle", 0);
             animator.SetFloat("Vertical_Idle", 0);
             animator.SetFloat("Velocidad", 1);
@@ -140,7 +310,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Debug.Log(GetFacingDirection());
             animator.SetFloat("Horizontal", 0);
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Velocidad", 0);
@@ -149,16 +318,39 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    
-    //Recoger dirección para hacer ataques o dash
+    // Método público para obtener la dirección del último movimiento/ataque
     public Vector2 GetFacingDirection()
     {
         return lastMoveDirection;
     }
     
-    //Ver si está en dash
+    // Ver si está en dash
     public bool IsDashing()
     {
         return isDashing;
+    }
+    
+    // Ver si está atacando
+    public bool IsAttacking()
+    {
+        return isAttacking;
+    }
+    
+    // Método para debug: visualizar el rango de ataque en el editor
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        }
+    }
+
+
+    void Die()
+    {
+        Debug.Log("Jugador ha muerto");
+        // Aquí puedes añadir lógica de muerte (reiniciar nivel, mostrar pantalla de game over, etc.)
+        Time.timeScale = 0; // Pausar el juego como ejemplo
     }
 }
