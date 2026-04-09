@@ -8,12 +8,14 @@ public class Generador : MonoBehaviour
     public GameObject mabirroPrefab;
     public GameObject mabirroInstanciado;
     void Start()
+    {  
+            InvokeRepeating(nameof(Spawn), 2.0f, 5f);
+        
+    }
+
+    void Spawn()
     {
-        //mabirroInstanciado = GameObject.Instantiate (mabirroPrefab) as GameObject;
-        for(int i = 0; i<100; i++)
-        {
-            GameObject.Instantiate(mabirroPrefab);
-        }
+        GameObject.Instantiate(mabirroPrefab);
     }
 
 }
