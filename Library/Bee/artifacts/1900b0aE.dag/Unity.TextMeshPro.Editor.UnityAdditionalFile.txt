@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 C:\Users\6003887\Documents\GitHub\FeatherNest
 =======
 C:\Users\gokir\Documents\GitHub\FeatherNest
 >>>>>>> Stashed changes
+=======
+C:\Users\gokir\Documents\GitHub\FeatherNest
+>>>>>>> master
