@@ -25,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Salud del Jugador")]
     [SerializeField] private int maxHealth = 5;
     private int currentHealth;
+
+
+    [Header("Bomba")]
+    [SerializeField] private GameObject bombPrefab; //Bombardo Gerardo
+    [SerializeField] private float bombCooldown = 5f; // Tiempo de cooldown de la bomba
+    private float bombCooldownTimer = 0f; // Temporizador para el cooldown
     
     // Variables de estado
     private Vector2 movementInput;
@@ -103,6 +109,12 @@ public class PlayerMovement : MonoBehaviour
         {
             dashCooldownTime -= Time.deltaTime;
         }
+
+        // Cooldown de la bomba
+        if (bombCooldownTimer > 0)
+        {
+            bombCooldownTimer -= Time.deltaTime;
+        }
         
         // Terminar dash
         if (isDashing)
@@ -112,6 +124,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 StopDash();
             }
+        }
+
+        // Tecla F para poner bomba
+        if (Input.GetKeyDown(KeyCode.F)) 
+        {
+            SetBomb();
         }
         
         // Actualizar animaciones
@@ -256,6 +274,29 @@ void PerformAttack()
             0
         );
     }
+
+
+    void SetBomb()
+{
+    // Verificar si está en cooldown
+    if (bombCooldownTimer > 0)
+    {
+        Debug.Log($"Bomba en cooldown. Espera {bombCooldownTimer:F1} segundos");
+        return;
+    }
+    
+    // Verificar si el prefab existe
+    if (bombPrefab != null)
+    {
+        Instantiate(bombPrefab, new Vector2(transform.position.x, (float)(transform.position.y - 0.5)), Quaternion.identity);
+        bombCooldownTimer = bombCooldown;
+        Debug.Log("¡Bomba colocada!");
+    }
+    else
+    {
+        Debug.LogError("No se ha asignado el prefab de la bomba en el inspector");
+    }
+}
     
     void StartDash()
     {
