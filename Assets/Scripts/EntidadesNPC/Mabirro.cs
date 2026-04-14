@@ -226,11 +226,10 @@ public class Mabirro : MonoBehaviour
     
     IEnumerator ResetKnockback()
     {
-        float originalSpeed = moveSpeed;
+        //float originalSpeed = moveSpeed;
         moveSpeed = 0; // Detener movimiento temporalmente
         bool empuje = false;
         yield return new WaitForSeconds(0.2f);
-        moveSpeed = originalSpeed;
         
     }
     
