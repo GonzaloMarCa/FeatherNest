@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 C:\Users\6003887\Documents\GitHub\FeatherNest
 =======
@@ -7,3 +8,6 @@ C:\Users\gokir\Documents\GitHub\FeatherNest
 =======
 C:\Users\gokir\Documents\GitHub\FeatherNest
 >>>>>>> master
+=======
+C:\Users\6003887\Documents\GitHub\FeatherNest
+>>>>>>> 38d46832c31ab07712d0687a5ecadc9cad7da7ff

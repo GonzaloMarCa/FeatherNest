@@ -98,6 +98,7 @@ ScriptedImporter:
     addShadowCasters: 0
   importFileNodeState: 1
   platformSettingsDirtyTick: 639100542409775406
+  platformSettingsDirtyTick: 639120381282608156
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -642,6 +643,7 @@ ScriptedImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
     crunchedCompression: 0

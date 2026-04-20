@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ataque")]
     [SerializeField] private float attackDuration = 0.3f;
     [SerializeField] private float attackCooldown = 0.5f;
+    [SerializeField] private float attackDuration = 0.5f;
+    [SerializeField] private float attackCooldown = 0.8f;
     [SerializeField] private Transform attackPoint; // Punto desde donde se genera el ataque
     [SerializeField] private float attackRange = 1f; // Rango del ataque
     [SerializeField] private LayerMask enemyLayers; // Capas que puede dañar
@@ -25,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Salud del Jugador")]
     [SerializeField] private int maxHealth = 5;
     private int currentHealth;
+
+
+    [Header("Bomba")]
+    [SerializeField] private GameObject bombPrefab; //Bombardo Gerardo
+    [SerializeField] private float bombCooldown = 5f; // Tiempo de cooldown de la bomba
+    private float bombCooldownTimer = 0f; // Temporizador para el cooldown
     
     // Variables de estado
     private Vector2 movementInput;
@@ -103,6 +111,12 @@ public class PlayerMovement : MonoBehaviour
         {
             dashCooldownTime -= Time.deltaTime;
         }
+
+        // Cooldown de la bomba
+        if (bombCooldownTimer > 0)
+        {
+            bombCooldownTimer -= Time.deltaTime;
+        }
         
         // Terminar dash
         if (isDashing)
@@ -112,6 +126,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 StopDash();
             }
+        }
+
+        // Tecla F para poner bomba
+        if (Input.GetKeyDown(KeyCode.F)) 
+        {
+            SetBomb();
         }
         
         // Actualizar animaciones
@@ -171,6 +191,8 @@ public class PlayerMovement : MonoBehaviour
         if (sr != null)
         {
             Color originalColor = sr.color;
+            //problema respecto al color arreglado :D:D
+            Color originalColor = Color.white;
             sr.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             sr.color = originalColor;
@@ -217,6 +239,20 @@ public class PlayerMovement : MonoBehaviour
             // Pasar la dirección del ataque para la animación
             animator.SetFloat("AttackHorizontal", lastMoveDirection.x);
             animator.SetFloat("AttackVertical", lastMoveDirection.y);
+            animator.SetFloat("Ataque", 1);
+             animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Horizontal_Idle", 0);
+            animator.SetFloat("Vertical_Idle", 0);
+            animator.SetFloat("AttHorizontal", movementInput.x);
+            if(movementInput.y < 0)
+            {
+                animator.SetFloat("AttVertical", -1);
+            } else
+            {
+                animator.SetFloat("AttVertical", 1);
+            }
+            
         }
         
         Debug.Log("¡Ataque realizado en dirección: " + lastMoveDirection);
@@ -229,17 +265,33 @@ void PerformAttack()
     
     // Dañar a los enemigos
     foreach (Collider2D enemy in hitEnemies)
+    void PerformAttack()
     {
         // Cambia esto:
         // EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
         
         // Por esto:
         Mabirro enemyScript = enemy.GetComponent<Mabirro>();
+        // Detectar enemigos en el rango de ataque
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         
         if (enemyScript != null)
+        // Dañar a los enemigos
+        foreach (Collider2D enemy in hitEnemies)
         {
             enemyScript.TakeDamage(attackDamage);
             Debug.Log("Enemigo golpeado: " + enemy.name);
+            // Cambia esto:
+            // EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+            
+            // Por esto:
+            Mabirro enemyScript = enemy.GetComponent<Mabirro>();
+            
+            if (enemyScript != null)
+            {
+                enemyScript.TakeDamage(attackDamage);
+                Debug.Log("Enemigo golpeado: " + enemy.name);
+            }
         }
     }
 }
@@ -255,6 +307,29 @@ void PerformAttack()
             lastMoveDirection.y * offsetDistance,
             0
         );
+    }
+
+
+    void SetBomb()
+    {
+        // Verificar si está en cooldown
+        if (bombCooldownTimer > 0)
+        {
+            Debug.Log($"Bomba en cooldown. Espera {bombCooldownTimer:F1} segundos");
+            return;
+        }
+        
+        // Verificar si el prefab existe
+        if (bombPrefab != null)
+        {
+            Instantiate(bombPrefab, new Vector2(transform.position.x, (float)(transform.position.y - 0.5)), Quaternion.identity);
+            bombCooldownTimer = bombCooldown;
+            Debug.Log("¡Bomba colocada!");
+        }
+        else
+        {
+            Debug.LogError("No se ha asignado el prefab de la bomba en el inspector");
+        }
     }
     
     void StartDash()
@@ -302,6 +377,7 @@ void PerformAttack()
         
         if (velocidadActual > 0.1f)
         {
+            animator.SetFloat("Ataque", 0);
             animator.SetFloat("Horizontal_Idle", 0);
             animator.SetFloat("Vertical_Idle", 0);
             animator.SetFloat("Velocidad", 1);
@@ -310,6 +386,7 @@ void PerformAttack()
         }
         else
         {
+            animator.SetFloat("Ataque", 0);
             animator.SetFloat("Horizontal", 0);
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Velocidad", 0);
