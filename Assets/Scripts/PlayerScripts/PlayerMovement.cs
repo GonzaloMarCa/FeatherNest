@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashCooldown = 0.5f;
     
     [Header("Ataque")]
-    [SerializeField] private float attackDuration = 0.3f;
-    [SerializeField] private float attackCooldown = 0.5f;
+    [SerializeField] private float attackDuration = 0.5f;
+    [SerializeField] private float attackCooldown = 0.8f;
     [SerializeField] private Transform attackPoint; // Punto desde donde se genera el ataque
     [SerializeField] private float attackRange = 1f; // Rango del ataque
     [SerializeField] private LayerMask enemyLayers; // Capas que puede dañar
@@ -188,7 +188,8 @@ public class PlayerMovement : MonoBehaviour
         SpriteRenderer sr = hijoVisual.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            Color originalColor = sr.color;
+            //problema respecto al color arreglado :D:D
+            Color originalColor = Color.white;
             sr.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             sr.color = originalColor;
@@ -231,36 +232,47 @@ public class PlayerMovement : MonoBehaviour
         // Activar animación de ataque
         if (animator != null)
         {
-            animator.SetTrigger("Attack");
             // Pasar la dirección del ataque para la animación
-            animator.SetFloat("AttackHorizontal", lastMoveDirection.x);
-            animator.SetFloat("AttackVertical", lastMoveDirection.y);
+            animator.SetFloat("Ataque", 1);
+             animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Horizontal_Idle", 0);
+            animator.SetFloat("Vertical_Idle", 0);
+            animator.SetFloat("AttHorizontal", movementInput.x);
+            if(movementInput.y < 0)
+            {
+                animator.SetFloat("AttVertical", -1);
+            } else
+            {
+                animator.SetFloat("AttVertical", 1);
+            }
+            
         }
         
         Debug.Log("¡Ataque realizado en dirección: " + lastMoveDirection);
     }
     
-void PerformAttack()
-{
-    // Detectar enemigos en el rango de ataque
-    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-    
-    // Dañar a los enemigos
-    foreach (Collider2D enemy in hitEnemies)
+    void PerformAttack()
     {
-        // Cambia esto:
-        // EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+        // Detectar enemigos en el rango de ataque
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         
-        // Por esto:
-        Mabirro enemyScript = enemy.GetComponent<Mabirro>();
-        
-        if (enemyScript != null)
+        // Dañar a los enemigos
+        foreach (Collider2D enemy in hitEnemies)
         {
-            enemyScript.TakeDamage(attackDamage);
-            Debug.Log("Enemigo golpeado: " + enemy.name);
+            // Cambia esto:
+            // EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+            
+            // Por esto:
+            Mabirro enemyScript = enemy.GetComponent<Mabirro>();
+            
+            if (enemyScript != null)
+            {
+                enemyScript.TakeDamage(attackDamage);
+                Debug.Log("Enemigo golpeado: " + enemy.name);
+            }
         }
     }
-}
     
     void UpdateAttackPointPosition()
     {
@@ -277,26 +289,26 @@ void PerformAttack()
 
 
     void SetBomb()
-{
-    // Verificar si está en cooldown
-    if (bombCooldownTimer > 0)
     {
-        Debug.Log($"Bomba en cooldown. Espera {bombCooldownTimer:F1} segundos");
-        return;
+        // Verificar si está en cooldown
+        if (bombCooldownTimer > 0)
+        {
+            Debug.Log($"Bomba en cooldown. Espera {bombCooldownTimer:F1} segundos");
+            return;
+        }
+        
+        // Verificar si el prefab existe
+        if (bombPrefab != null)
+        {
+            Instantiate(bombPrefab, new Vector2(transform.position.x, (float)(transform.position.y - 0.5)), Quaternion.identity);
+            bombCooldownTimer = bombCooldown;
+            Debug.Log("¡Bomba colocada!");
+        }
+        else
+        {
+            Debug.LogError("No se ha asignado el prefab de la bomba en el inspector");
+        }
     }
-    
-    // Verificar si el prefab existe
-    if (bombPrefab != null)
-    {
-        Instantiate(bombPrefab, new Vector2(transform.position.x, (float)(transform.position.y - 0.5)), Quaternion.identity);
-        bombCooldownTimer = bombCooldown;
-        Debug.Log("¡Bomba colocada!");
-    }
-    else
-    {
-        Debug.LogError("No se ha asignado el prefab de la bomba en el inspector");
-    }
-}
     
     void StartDash()
     {
@@ -343,6 +355,7 @@ void PerformAttack()
         
         if (velocidadActual > 0.1f)
         {
+            animator.SetFloat("Ataque", 0);
             animator.SetFloat("Horizontal_Idle", 0);
             animator.SetFloat("Vertical_Idle", 0);
             animator.SetFloat("Velocidad", 1);
@@ -351,6 +364,7 @@ void PerformAttack()
         }
         else
         {
+            animator.SetFloat("Ataque", 0);
             animator.SetFloat("Horizontal", 0);
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Velocidad", 0);

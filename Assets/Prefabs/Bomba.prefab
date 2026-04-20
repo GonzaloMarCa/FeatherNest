@@ -83,10 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiempoExplosion: 3
   "da\xF1o": 2
-  radioExplosion: 3
-  capasEnemigo:
-    serializedVersion: 2
-    m_Bits: 256
+  radioExplosion: 8
   efectoExplosion: {fileID: 0}
   colorInicial: {r: 1, g: 1, b: 1, a: 1}
   colorFinal: {r: 1, g: 0, b: 0, a: 1}
