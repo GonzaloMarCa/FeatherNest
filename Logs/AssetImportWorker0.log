@@ -1,6 +1,5 @@
 Using pre-set license
 Built from '2022.3/staging' branch; Version is '2022.3.47f1 (88c277b85d21) revision 8962679'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 11  (10.0.26200) 64bit Core' Language: 'es' Physical Memory: 32095 MB
 OS: 'Windows 11  (10.0.26200) 64bit Professional' Language: 'es' Physical Memory: 32465 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
 
@@ -12,7 +11,6 @@ C:\Program Files\Unity\Hub\Editor\2022.3.47f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/gokir/Documents/GitHub/FeatherNest
 C:/Users/6003887/Documents/GitHub/FeatherNest
 -logFile
 Logs/AssetImportWorker0.log
@@ -87,15 +85,10 @@ Refreshing native plugins compatible for Editor in 21.05 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.47f1 (88c277b85d21)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/gokir/Documents/GitHub/FeatherNest/Assets
 [Subsystems] Discovering subsystems at path C:/Users/6003887/Documents/GitHub/FeatherNest/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: AMD Radeon (TM) Graphics (ID=0x15e7)
-    Vendor:   ATI
-    VRAM:     16047 MB
-    Driver:   31.0.21914.18001
     Renderer: Intel(R) Iris(R) Xe Graphics (ID=0x46a6)
     Vendor:   Intel
     VRAM:     16232 MB
@@ -203,7 +196,6 @@ Domain Reload Profiling: 1181ms
 	BeginReloadAssembly (155ms)
 >>>>>>> 38d46832c31ab07712d0687a5ecadc9cad7da7ff
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (5ms)
 		DisableScriptedObjects (7ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
@@ -309,7 +301,6 @@ Start importing Assets/Sprites/Altramuz/Altramuz1.0/Altramuz1.1.png using Guid(1
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack using Guid(fbd533b71063ec241ba8f50185001191) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
  -> (artifact id: '352c089834e8643d737f2e3ca7de27ad') in 0.002252 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
@@ -453,15 +444,9 @@ Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/right/altramuzAtack.a
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
  -> (artifact id: '0716d980422b1296eac1ae1a7cbf9404') in 0.039543 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
 Number of asset objects unloaded after import = 16
 ========================================================================
 Received Import Request.
-  Time since last request: 385.573708 seconds.
-  path: Assets/Prefabs/Mabirro.prefab
-  artifactKey: Guid(796c83437bc93064c82d2a3d80199485) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Mabirro.prefab using Guid(796c83437bc93064c82d2a3d80199485) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '0208d03ebcd07a9163853fb2c60bf6f4') in 0.010323 seconds
   Time since last request: 4.542845 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/right/altramuzAtack.aseprite
   artifactKey: Guid(386db3743cc7b4d4f9beeda6cb1cd0d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -469,31 +454,19 @@ Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/right/altramuzAtack.a
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
  -> (artifact id: '5b8844f933ab2cf6049221ee8baf5ad8') in 0.009983 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 12
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 6.361642 seconds.
-  path: Assets/Sprites/Altramuz/Altramuz1.0/idle/down/Altramuz1.1.gif
-  artifactKey: Guid(6872152dd30729441b3af5e4d691897f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sprites/Altramuz/Altramuz1.0/idle/down/Altramuz1.1.gif using Guid(6872152dd30729441b3af5e4d691897f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 3.370444 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/right/altramuzAtack.aseprite
   artifactKey: Guid(386db3743cc7b4d4f9beeda6cb1cd0d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/right/altramuzAtack.aseprite using Guid(386db3743cc7b4d4f9beeda6cb1cd0d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'c3e73702f5704a542d3a1ef5af66d267') in 0.009413 seconds
  -> (artifact id: 'c9b995279aaf379322113e5cf3d46e33') in 0.025279 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 7
 ========================================================================
 Received Import Request.
-  Time since last request: 66.215948 seconds.
-  path: Assets/Materials
-  artifactKey: Guid(16325e3fb375c5549a622619ba76de36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials using Guid(16325e3fb375c5549a622619ba76de36) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'c98c40b7495887666fc7e2ab946b918e') in 0.000498 seconds
   Time since last request: 10.165306 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/down/AltramuzAtack.ase
   artifactKey: Guid(595fd8880996d2a40a42303b6ee31bc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -501,15 +474,9 @@ Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/down/AltramuzAtack.as
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
  -> (artifact id: '2eb5322bab74286cdef55dcc2593ad9e') in 0.020682 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
 Number of asset objects unloaded after import = 6
 ========================================================================
 Received Import Request.
-  Time since last request: 0.542181 seconds.
-  path: Assets/Prefabs
-  artifactKey: Guid(a4af8d283f49e0344a63021443808e44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs using Guid(a4af8d283f49e0344a63021443808e44) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'd1c8a18908f656450fc05f559816a6cb') in 0.001038 seconds
   Time since last request: 12.251612 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/down/AltramuzAtack.aseprite
   artifactKey: Guid(05b950efefc0f6c4ebddeb900d55d306) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -517,62 +484,39 @@ Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/down/AltramuzAtack.as
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
  -> (artifact id: '21be4626ef7360ed91ddd353d1345907') in 0.009988 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 2.478571 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Attack-Anim.png
-  artifactKey: Guid(e4d9a56158bf71841897a6f705e81c6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Attack-Anim.png using Guid(e4d9a56158bf71841897a6f705e81c6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 5.749803 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/down/AltramuzAtack.aseprite
   artifactKey: Guid(05b950efefc0f6c4ebddeb900d55d306) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/down/AltramuzAtack.aseprite using Guid(05b950efefc0f6c4ebddeb900d55d306) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'cfb35bf1955b7d8b19c19a6e14891d4f') in 0.355158 seconds
  -> (artifact id: '230caac64e17fa132f4f1eda0a3621d4') in 0.018629 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 106
 Number of asset objects unloaded after import = 6
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000044 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Rotate-Offsets.png
-  artifactKey: Guid(c23a66ccd1ca9844ea0cec4ecf8e45e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Rotate-Offsets.png using Guid(c23a66ccd1ca9844ea0cec4ecf8e45e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 7.334698 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/left/altramuzAtack.aseprite
   artifactKey: Guid(07a43a4d5e30a00458c1d424a2661080) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/left/altramuzAtack.aseprite using Guid(07a43a4d5e30a00458c1d424a2661080) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'eaaf1fb4b0177de4da068d860e661cef') in 0.018270 seconds
  -> (artifact id: '117ddef1b2bd99cfb6da33a3a0345159') in 0.024494 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 7
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000035 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Swing-Anim.png
-  artifactKey: Guid(cb2d7fa3c6eb0074db75fb2583ddd1ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Swing-Anim.png using Guid(cb2d7fa3c6eb0074db75fb2583ddd1ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 5.532030 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/right/altramuzAtack.aseprite
   artifactKey: Guid(386db3743cc7b4d4f9beeda6cb1cd0d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/right/altramuzAtack.aseprite using Guid(386db3743cc7b4d4f9beeda6cb1cd0d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'c448360fe9571d759863654e66d3974c') in 0.017010 seconds
  -> (artifact id: '00a1927f3d2f66447491aa8cc48e66f5') in 0.021948 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 7
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Swing-Offsets.png
-  artifactKey: Guid(c5f7052e5ad16e14f9d60a920a130ba0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Swing-Offsets.png using Guid(c5f7052e5ad16e14f9d60a920a130ba0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 2.182776 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/up
   artifactKey: Guid(42cc86687089fab4381ac11dcd2fb503) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -587,66 +531,42 @@ Received Import Request.
   artifactKey: Guid(0d7b944551bb69b41b1046298ab9860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/up/AltramuzAtack.aseprite using Guid(0d7b944551bb69b41b1046298ab9860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'ff38074a17d05f976b999609753f82da') in 0.015627 seconds
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
  -> (artifact id: '3a7deac378557714347a810a4e72cd75') in 0.027973 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 15
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Idle-Offsets.png
-  artifactKey: Guid(ced5f4da1ab7af741b805773beadb6d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Idle-Offsets.png using Guid(ced5f4da1ab7af741b805773beadb6d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 19.783832 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/up/AltramuzAtack.aseprite
   artifactKey: Guid(0d7b944551bb69b41b1046298ab9860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/up/AltramuzAtack.aseprite using Guid(0d7b944551bb69b41b1046298ab9860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'dfafa25f3c65cc9861e296734dd6632f') in 0.015518 seconds
  -> (artifact id: '4ea41dd46413d100efea68307dea35b6') in 0.010387 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Hurt-Shadow.png
-  artifactKey: Guid(13ba38671f295aa47a70a156d9b7a905) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Hurt-Shadow.png using Guid(13ba38671f295aa47a70a156d9b7a905) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 2.767881 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/up/AltramuzAtack.aseprite
   artifactKey: Guid(0d7b944551bb69b41b1046298ab9860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/up/AltramuzAtack.aseprite using Guid(0d7b944551bb69b41b1046298ab9860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '9dc56e6a28efae5f6f49eeb0202a3cb7') in 0.009055 seconds
  -> (artifact id: 'f08b674d1852bc50c77eea7ca5e82b35') in 0.010960 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 2
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Walk-Shadow.png
-  artifactKey: Guid(aaf69118e47f5ea4781ed9b3a2887eaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Walk-Shadow.png using Guid(aaf69118e47f5ea4781ed9b3a2887eaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 4.571881 seconds.
   path: Assets/Sprites/Altramuz/Altramuz1.0/attack/up/AltramuzAtack.aseprite
   artifactKey: Guid(0d7b944551bb69b41b1046298ab9860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/Altramuz/Altramuz1.0/attack/up/AltramuzAtack.aseprite using Guid(0d7b944551bb69b41b1046298ab9860a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'a4d2f9082cf90039bb1d0429bf84d30f') in 0.011576 seconds
  -> (artifact id: '2171cd55819c7e71e81f4e745ab25f54') in 0.022112 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 6
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Swing-Shadow.png
-  artifactKey: Guid(77572df1415f32a40a73b39060e84d2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Swing-Shadow.png using Guid(77572df1415f32a40a73b39060e84d2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 21.750802 seconds.
   path: Assets/Animaciones/Animators/Player/down 1
   artifactKey: Guid(6c89acd29c8b405489b831b4f2dfc8b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -661,33 +581,21 @@ Received Import Request.
   artifactKey: Guid(0b6502e1a66728e48871b39d8c03b448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animaciones/Animators/Player/down 1/AltramuzAtack.ase using Guid(0b6502e1a66728e48871b39d8c03b448) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'e1f91a0926796186d027050b0bf04bfe') in 0.011153 seconds
  -> (artifact id: '91050a5bbae5bf86eaa65350afbea80b') in 0.027195 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 6
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/RearUp-Anim.png
-  artifactKey: Guid(904f37533c245104f98e21f0d0a00ded) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/RearUp-Anim.png using Guid(904f37533c245104f98e21f0d0a00ded) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 5.236249 seconds.
   path: Assets/Animaciones/Animators/Player/down/AltramuzAtack.ase
   artifactKey: Guid(9f7f578c0c627a24bade8e5292d35586) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animaciones/Animators/Player/down/AltramuzAtack.ase using Guid(9f7f578c0c627a24bade8e5292d35586) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '57573e60180ec94313aa72d08f3ca88e') in 0.012161 seconds
  -> (artifact id: '0b530a46c6958975a04e836d58a71ee9') in 0.019463 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 6
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000042 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Shoot-Shadow.png
-  artifactKey: Guid(d300ab679d2d25f4a95c80524eb50417) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Shoot-Shadow.png using Guid(d300ab679d2d25f4a95c80524eb50417) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 3.947728 seconds.
   path: Assets/Animaciones/Animators/Player/left 1
   artifactKey: Guid(dcf3286346be9ca4591b2de6627a5f54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -702,33 +610,21 @@ Received Import Request.
   artifactKey: Guid(130c608fb62194e4dac4a9be0735715f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animaciones/Animators/Player/left 1/altramuzAtack.aseprite using Guid(130c608fb62194e4dac4a9be0735715f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'dc33fb81670a3bbf686222fdd1c67e59') in 0.013264 seconds
  -> (artifact id: '8a53cf5055196504c295ad31b3f2add2') in 0.031322 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 7
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Walk-Offsets.png
-  artifactKey: Guid(f2b919f004958fd45947fa0d38823a15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Walk-Offsets.png using Guid(f2b919f004958fd45947fa0d38823a15) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 4.097413 seconds.
   path: Assets/Animaciones/Animators/Player/left/altramuzAtack.aseprite
   artifactKey: Guid(cf7e380b76f2bf248bdcc25ec1e0c7bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animaciones/Animators/Player/left/altramuzAtack.aseprite using Guid(cf7e380b76f2bf248bdcc25ec1e0c7bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'ef4c08424442288d46037e62649a2d41') in 0.011149 seconds
  -> (artifact id: '608d42b2154530abac1794a71d447134') in 0.019366 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 7
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/RearUp-Shadow.png
-  artifactKey: Guid(2b6c7cc686ecee148ad1e13294596089) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/RearUp-Shadow.png using Guid(2b6c7cc686ecee148ad1e13294596089) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 9.811177 seconds.
   path: Assets/Animaciones/Animators/Player/right 1
   artifactKey: Guid(f3c06af354b15214199b75f7f88ec22a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -743,33 +639,21 @@ Received Import Request.
   artifactKey: Guid(caf1da9c7bab0314fa7c2bdb5c33fad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animaciones/Animators/Player/right 1/altramuzAtack.aseprite using Guid(caf1da9c7bab0314fa7c2bdb5c33fad1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '9d5fa70f2eb1dd07348552b09881c2fb') in 0.011191 seconds
  -> (artifact id: '109ed31cbb713f0f54db7c834e974432') in 0.029086 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 7
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Double-Shadow.png
-  artifactKey: Guid(df22fec8320a63143871c92ccadc3983) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Double-Shadow.png using Guid(df22fec8320a63143871c92ccadc3983) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 4.120914 seconds.
   path: Assets/Animaciones/Animators/Player/right/altramuzAtack.aseprite
   artifactKey: Guid(f1f791339c71ae84196fd76e042b4d8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animaciones/Animators/Player/right/altramuzAtack.aseprite using Guid(f1f791339c71ae84196fd76e042b4d8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'ef773310690e7df1aff2927f394fe421') in 0.019316 seconds
  -> (artifact id: 'a1fca3c47a056f1a6a2287e53db453c8') in 0.020786 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 7
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Rotate-Anim.png
-  artifactKey: Guid(0271102d2e74acc4984104abb62c2ea9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Rotate-Anim.png using Guid(0271102d2e74acc4984104abb62c2ea9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 1.573271 seconds.
   path: Assets/Animaciones/Animators/Player/up 1
   artifactKey: Guid(2fead501601337b4f8a325af904b20c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
@@ -784,23 +668,16 @@ Received Import Request.
   artifactKey: Guid(f5b53e011dc708145a8ef8a6aec8f6b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animaciones/Animators/Player/up 1/AltramuzAtack.aseprite using Guid(f5b53e011dc708145a8ef8a6aec8f6b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'd2e845621f66a2535f06f79edb538cc4') in 0.013672 seconds
  -> (artifact id: 'd2707bc992592065f3ba5b50e5b8fee6') in 0.026891 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 3
 Number of asset objects unloaded after import = 6
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/ImportedSprites/PlayerSprites/Hop-Anim.png
-  artifactKey: Guid(d29daf45f352e064fb98fd740a9a2074) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ImportedSprites/PlayerSprites/Hop-Anim.png using Guid(d29daf45f352e064fb98fd740a9a2074) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
   Time since last request: 3.152931 seconds.
   path: Assets/Animaciones/Animators/Player/up/AltramuzAtack.aseprite
   artifactKey: Guid(eca36791f837b9c4c8e57f85b10ecafe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Animaciones/Animators/Player/up/AltramuzAtack.aseprite using Guid(eca36791f837b9c4c8e57f85b10ecafe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '939e66f2f7b9cf230b9b61235d368958') in 0.016512 seconds
  -> (artifact id: '554190b89a576671009d6b86304a4672') in 0.021215 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 6

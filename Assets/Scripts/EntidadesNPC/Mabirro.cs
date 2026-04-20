@@ -176,8 +176,6 @@ public class Mabirro : MonoBehaviour
         }
         
         // Parámetro opcional para saber si está persiguiendo
-        bool isChasing = IsPlayerDetected();
-        animator.SetBool("IsChasing", isChasing);
 
     }
     
@@ -227,21 +225,15 @@ public class Mabirro : MonoBehaviour
     
     IEnumerator ResetKnockback()
     {
-        float originalSpeed = moveSpeed;
-        moveSpeed = 0; // Detener movimiento temporalmente
-        bool empuje = false;
         //bug knockback infinito corregido (motivo de celebración)
         //Primero espera para que afecte el knockback
         yield return new WaitForSeconds(0.2f);
-        moveSpeed = originalSpeed;
-        
 
         //Después reestablece el empuje y aplica la velocidad de 0 para que reanude la marcha. Por último, desactiva el bool.
         rb.velocity = new Vector2(0,0);
         rb.velocity = currentDirection * moveSpeed;
         bool empuje = false;
     }
-    
 
 
 
@@ -265,7 +257,6 @@ public class Mabirro : MonoBehaviour
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
         
-        // Activar animación de muerte
         // Activar animación de muerte, por el momento inútil
         if (animator != null)
         {
@@ -298,7 +289,6 @@ public class Mabirro : MonoBehaviour
             rb.velocity = bounceDirection * moveSpeed * 0.5f;
         }
         
-        Debug.Log("checkeando si se pega con jugador");
         Debug.Log("comprobando si se pega con jugador");
         // Colisión con el jugador
         if (collision.gameObject.CompareTag("Player") && canAttack)

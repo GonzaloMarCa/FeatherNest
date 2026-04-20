@@ -71,7 +71,6 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
     fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
@@ -85,7 +84,6 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 1
     fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
@@ -99,7 +97,6 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
   platformSettingsDirtyTick: 639120384931492916
   textureAssetName: 
   singleSpriteImportData:
@@ -184,7 +181,6 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  spriteSheetImportData: []
   spriteSheetImportData:
   - name: Altramuz1_0
     originalName: 

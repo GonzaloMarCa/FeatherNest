@@ -84,7 +84,6 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlendTree
   m_Name: Idle
   m_Childs:
   - serializedVersion: 2
@@ -318,13 +317,11 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blend Tree
   m_Name: Base
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 6623279054194155465}
     m_Threshold: 1
-    m_Position: {x: 0, y: 0}
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -333,7 +330,6 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -3393416332564786942}
     m_Threshold: 1
-    m_Position: {x: 0, y: 0}
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -347,7 +343,6 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
-  m_BlendParameter: Velocidad
   m_BlendParameter: Ataque
   m_BlendParameterY: Velocidad
   m_MinThreshold: 1
@@ -376,7 +371,6 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlendTree
   m_Name: Movimiento
   m_Childs:
   - serializedVersion: 2
@@ -543,7 +537,6 @@ AnimatorStateMachine:
     m_Position: {x: 60, y: 430, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1667937145675108419}
-    m_Position: {x: 220, y: 330, z: 0}
     m_Position: {x: 500, y: 530, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6800221612127260531}
