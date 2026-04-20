@@ -40,7 +40,7 @@ public class Mabirro : MonoBehaviour
     private Color originalColor;
 
 
-    public LayerMask capaEnemigo;
+    public int capaEnemigo;
     
     void Start()
     {

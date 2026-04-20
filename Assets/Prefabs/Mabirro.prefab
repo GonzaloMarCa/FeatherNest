@@ -114,9 +114,7 @@ MonoBehaviour:
   attackCooldown: 1
   pushForceOnHit: 3
   hijoVisual: {fileID: 8349077391629176350}
-  capaEnemigo:
-    serializedVersion: 2
-    m_Bits: 256
+  capaEnemigo: 8
 --- !u!70 &5007033756270898305
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -234,7 +232,7 @@ SpriteRenderer:
   m_Size: {x: 0.24, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1531541640707354633
