@@ -8,9 +8,8 @@ public class Bomba : MonoBehaviour
     [SerializeField] private float tiempoExplosion = 3f;
     
     [Header("Configuración de Daño")]
-    [SerializeField] private int daño = 2;
-    [SerializeField] private float radioExplosion = 3f;
-    [SerializeField] private LayerMask capasEnemigo;
+    [SerializeField] private int daño = 3;
+    [SerializeField] private float radioExplosion = 25f;
     
     [Header("Efectos Visuales")]
     [SerializeField] private GameObject efectoExplosion;
@@ -29,7 +28,7 @@ public class Bomba : MonoBehaviour
     
     void Start()
     {
-        gameObject.layer = capasEnemigo;
+        gameObject.layer = 3;
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
@@ -50,7 +49,7 @@ public class Bomba : MonoBehaviour
         
         if (tiempoActual <= 0)
         {
-            Explotar();
+            Explosion();
         }
     }
     
@@ -92,7 +91,7 @@ public class Bomba : MonoBehaviour
         {
             if (spriteRenderer != null)
             {
-                // Alternar entre color final y blanco
+                // Alternar entre rojo y blanco AUPA ATHLETIC
                 float parpadeo = Mathf.PingPong(Time.time * velocidadParpadeo, 1);
                 spriteRenderer.color = Color.Lerp(Color.white, colorFinal, parpadeo);
             }
@@ -100,12 +99,12 @@ public class Bomba : MonoBehaviour
         }
     }
     
-    void Explotar()
+    void Explosion()
     {
         if (haExplotado) return;
         
         haExplotado = true;
-        DetectarYDañarEnemigos();
+        ExplosionDamage();
         
         if (efectoExplosion != null)
         {
@@ -115,9 +114,24 @@ public class Bomba : MonoBehaviour
         Destroy(gameObject);
     }
     
-    void DetectarYDañarEnemigos()
+
+    void ExplosionDamage()
     {
-        Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(transform.position, radioExplosion, capasEnemigo);
+        Debug.Log($"=== BOMBA EXPLOTANDO ===");
+        Debug.Log($"Posición: {transform.position}");
+        Debug.Log($"Radio: {radioExplosion}");
+        
+        // 1. Detectar TODOS los colliders sin filtro
+        Collider2D[] todosColliders = Physics2D.OverlapCircleAll(transform.position, radioExplosion);
+        
+        // Listar todos los colliders encontrados
+        foreach (Collider2D col in todosColliders)
+        {
+            Debug.Log($"  - {col.name}: Layer={LayerMask.LayerToName(col.gameObject.layer)} ({col.gameObject.layer})");
+        }
+        
+        // 2. Detectar específicamente la capa Enemigos
+        Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(transform.position, radioExplosion, 3);
         
         foreach (Collider2D enemigo in enemigosCerca)
         {
@@ -128,7 +142,9 @@ public class Bomba : MonoBehaviour
             }
         }
     }
-    
+
+
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
