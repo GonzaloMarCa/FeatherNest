@@ -133,8 +133,10 @@ public class PlayerMovement : MonoBehaviour
         }
         
         // Actualizar animaciones
-        UpdateAnimations();
-        
+        if (!isAttacking)
+        {
+            UpdateAnimations();
+        }
         // Actualizar posición del punto de ataque según la dirección
         UpdateAttackPointPosition();
     }
@@ -234,18 +236,8 @@ public class PlayerMovement : MonoBehaviour
         {
             // Pasar la dirección del ataque para la animación
             animator.SetFloat("Ataque", 1);
-             animator.SetFloat("Horizontal", 0);
-            animator.SetFloat("Vertical", 0);
-            animator.SetFloat("Horizontal_Idle", 0);
-            animator.SetFloat("Vertical_Idle", 0);
-            animator.SetFloat("AttHorizontal", movementInput.x);
-            if(movementInput.y < 0)
-            {
-                animator.SetFloat("AttVertical", -1);
-            } else
-            {
-                animator.SetFloat("AttVertical", 1);
-            }
+            animator.SetFloat("AttHorizontal", GetFacingDirection().x);
+            animator.SetFloat("AttVertical", GetFacingDirection().y);
             
         }
         
@@ -278,7 +270,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (attackPoint == null) return;
         
-        // Posicionar el punto de ataque según la dirección del jugador
+        // Coloca el punto de ataque según la dirección del jugador
         float offsetDistance = 0.4f; // Distancia desde el centro del jugador
         attackPoint.localPosition = new Vector3(
             lastMoveDirection.x * offsetDistance,
@@ -290,14 +282,14 @@ public class PlayerMovement : MonoBehaviour
 
     void SetBomb()
     {
-        // Verificar si está en cooldown
+        // Revisa si está en cooldown
         if (bombCooldownTimer > 0)
         {
             Debug.Log($"Bomba en cooldown. Espera {bombCooldownTimer:F1} segundos");
             return;
         }
         
-        // Verificar si el prefab existe
+        // Revisa si el prefab existe
         if (bombPrefab != null)
         {
             Instantiate(bombPrefab, new Vector2(transform.position.x, (float)(transform.position.y - 0.5)), Quaternion.identity);
@@ -312,17 +304,17 @@ public class PlayerMovement : MonoBehaviour
     
     void StartDash()
     {
-        // No se puede hacer dash mientras se ataca
+        // No se puede dashear mientras se ataca
         if (isAttacking) return;
         
         isDashing = true;
         dashTime = dashDuration;
         dashCooldownTime = dashCooldown;
         
-        // Poner invuln
+        // Poner invencibilidad (aun no esta implementado)
         // gameObject.layer = LayerMask.NameToLayer("Invulnerable");
         
-        // Efecto visual simple (opcional)
+        // Efecto visual simple (que aun TAMPOCO existe)
         if (animator != null)
         {
             animator.SetTrigger("Dash");
@@ -338,7 +330,7 @@ public class PlayerMovement : MonoBehaviour
         // Quitar invuln
         // gameObject.layer = LayerMask.NameToLayer("Player");
         
-        // Pequeño frenado al terminar el dash (opcional)
+        // Pequeño frenado al terminar el dash (queda bonito)
         rb.velocity = Vector2.zero;
     }
     
@@ -392,6 +384,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
     // Método para debug: visualizar el rango de ataque en el editor
+   // Para revisarlo, abrir la pestaña de escena mientras el juego esta en marcha
     void OnDrawGizmosSelected()
     {
         if (attackPoint != null)
