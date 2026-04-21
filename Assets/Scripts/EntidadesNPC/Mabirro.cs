@@ -44,7 +44,7 @@ public class Mabirro : MonoBehaviour
     
     void Start()
     {
-        gameObject.layer = capaEnemigo;
+        gameObject.layer = 8;
         rb = GetComponent<Rigidbody2D>();
         animator = hijoVisual?.GetComponent<Animator>();
         spriteRenderer = hijoVisual?.GetComponent<SpriteRenderer>();
@@ -68,9 +68,10 @@ public class Mabirro : MonoBehaviour
     void Update()
     {
         if (isDead) return;
-        
+    
+
         bool playerDetected = IsPlayerDetected();
-        
+
         if (playerDetected)
         {
             MoveTowardsPlayerWithAvoidance();
@@ -86,6 +87,7 @@ public class Mabirro : MonoBehaviour
     void FixedUpdate()
     {
         if (isDead || empuje) return;
+        rb.velocity = new Vector2(0,0);
         rb.velocity = currentDirection * moveSpeed;
     }
     
@@ -190,7 +192,10 @@ public class Mabirro : MonoBehaviour
         StartCoroutine(FlashRed());
         
         // Efecto de knockback
-        ApplyKnockback();
+        if(empuje == false && currentHealth > 0)
+        {
+            ApplyKnockback();   
+        }
         
         Debug.Log($"Mabirro recibió {damage} de daño. Salud restante: {currentHealth}");
         
@@ -214,7 +219,9 @@ public class Mabirro : MonoBehaviour
     void ApplyKnockback()
     {
         if (player == null) return;
+
         empuje = true;
+
         // Dirección desde el jugador hacia el enemigo
         Vector2 knockbackDirection = (transform.position - player.position).normalized;
         rb.velocity = knockbackDirection * knockbackForce;
@@ -232,7 +239,9 @@ public class Mabirro : MonoBehaviour
         //Después reestablece el empuje y aplica la velocidad de 0 para que reanude la marcha. Por último, desactiva el bool.
         rb.velocity = new Vector2(0,0);
         rb.velocity = currentDirection * moveSpeed;
-        bool empuje = false;
+
+        //el error era que aqui creaba un nuevo bool en vez de usar el empuje.
+        empuje = false;
     }
 
 

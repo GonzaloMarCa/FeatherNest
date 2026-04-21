@@ -9,7 +9,7 @@ public class Bomba : MonoBehaviour
     
     [Header("Configuración de Daño")]
     [SerializeField] private int daño = 3;
-    [SerializeField] private float radioExplosion = 25f;
+    [SerializeField] private float radioExplosion = 3.5f;
     
     [Header("Efectos Visuales")]
     [SerializeField] private GameObject efectoExplosion;
@@ -131,7 +131,7 @@ public class Bomba : MonoBehaviour
         }
         
         // 2. Detectar específicamente la capa Enemigos
-        Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(transform.position, radioExplosion, 3);
+        Collider2D[] enemigosCerca = Physics2D.OverlapCircleAll(transform.position, radioExplosion);
         
         foreach (Collider2D enemigo in enemigosCerca)
         {
