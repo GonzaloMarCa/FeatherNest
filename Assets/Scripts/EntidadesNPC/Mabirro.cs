@@ -15,7 +15,7 @@ public class Mabirro : MonoBehaviour
     
     [Header("Configuración de Salud")]
     [SerializeField] private int maxHealth = 3;
-    [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private float knockbackForce = 10f;
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private GameObject deathEffect;
     
@@ -234,7 +234,7 @@ public class Mabirro : MonoBehaviour
     {
         //bug knockback infinito corregido (motivo de celebración)
         //Primero espera para que afecte el knockback
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         //Después reestablece el empuje y aplica la velocidad de 0 para que reanude la marcha. Por último, desactiva el bool.
         rb.velocity = new Vector2(0,0);
@@ -266,13 +266,13 @@ public class Mabirro : MonoBehaviour
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
         
-        // Activar animación de muerte, por el momento inútil
+        /* Activar animación de muerte, por el momento inútil
         if (animator != null)
         {
             animator.SetTrigger("Death");
         }
-        
-        // Efecto de muerte
+        */
+        // Efecto de muerte (si lo tuviésemos molaría)
         if (deathEffect != null)
         {
             Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -280,11 +280,11 @@ public class Mabirro : MonoBehaviour
         
         Debug.Log("Mabirro ha sido derrotado");
         
-        // Destruir después de un pequeño retraso (para que se vea la animación)
+        // Destruir después de un pequeño retraso (para que se vea la inexistente animación)
         Destroy(gameObject, 0.5f);
     }
     
-    // MÉTODO PARA DAÑAR AL JUGADOR
+    // Método para dañar al Jugador
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
