@@ -240,7 +240,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: Attvertical
+  - m_Name: AttVertical
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -633,7 +633,7 @@ BlendTree:
     m_DirectBlendParameter: Horizontal
     m_Mirror: 0
   m_BlendParameter: AttHorizontal
-  m_BlendParameterY: Attvertical
+  m_BlendParameterY: AttVertical
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1

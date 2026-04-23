@@ -15,7 +15,7 @@ public class Mabirro : MonoBehaviour
     
     [Header("Configuración de Salud")]
     [SerializeField] private int maxHealth = 3;
-    [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private float knockbackForce = 10f;
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private GameObject deathEffect;
     
@@ -234,7 +234,7 @@ public class Mabirro : MonoBehaviour
     {
         //bug knockback infinito corregido (motivo de celebración)
         //Primero espera para que afecte el knockback
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
 
         //Después reestablece el empuje y aplica la velocidad de 0 para que reanude la marcha. Por último, desactiva el bool.
         rb.velocity = new Vector2(0,0);

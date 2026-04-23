@@ -374,8 +374,10 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/EntidadesNPC/Mabirro.cs"
 "Assets/Scripts/Escena/Generador.cs"
+"Assets/Scripts/PlayerScripts/AttackHitbox.cs"
 "Assets/Scripts/PlayerScripts/BombaScript.cs"
 "Assets/Scripts/PlayerScripts/CameraFollow.cs"
+"Assets/Scripts/PlayerScripts/ParticleAttack.cs"
 "Assets/Scripts/PlayerScripts/PlayerMovement.cs"
 -langversion:9.0
 /deterministic
