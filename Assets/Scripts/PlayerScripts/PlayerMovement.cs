@@ -298,7 +298,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Activar animación de ataque
         
-             animator.SetFloat("Horizontal_Idle", 0);
+            animator.SetFloat("Horizontal_Idle", 0);
             animator.SetFloat("Vertical_Idle", 0);
             animator.SetFloat("Horizontal", 0);
             animator.SetFloat("Vertical", 0);
