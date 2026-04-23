@@ -9,14 +9,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashDuration = 0.25f;
     [SerializeField] private float dashCooldown = 0.5f;
     
-    [Header("Ataque")]
-    [SerializeField] private float attackDuration = 0.5f;
-    [SerializeField] private float attackCooldown = 0.8f;
-    [SerializeField] private Transform attackPoint; // Punto desde donde se genera el ataque
-    [SerializeField] private float attackRange = 1f; // Rango del ataque
-    [SerializeField] private LayerMask enemyLayers; // Capas que puede dañar
-    [SerializeField] private int attackDamage = 1; // Daño del ataque
     
+
+    [Header("Ataque con Partículas")]
+    [SerializeField] private ParticleAttack particleAttack;
+    [SerializeField] private float attackDuration = 0.3f; // Reduce a 0.3
+    [SerializeField] private float attackCooldown = 0.5f; // Reduce a 0.5
+
+
     [Header("Referencias")]
     private Rigidbody2D rb;
     private Animator animator;
@@ -57,13 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         // Crear attackPoint si no existe
-        if (attackPoint == null)
-        {
-            GameObject attackPointObj = new GameObject("AttackPoint");
-            attackPointObj.transform.parent = transform;
-            attackPointObj.transform.localPosition = Vector3.zero;
-            attackPoint = attackPointObj.transform;
-        }
+       
         
         // Dirección inicial por defecto
         lastMoveDirection = Vector2.down;
@@ -98,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             }
             
             // Inicio ataque
-            if (Input.GetMouseButtonDown(0) && canAttack) // Click izquierdo para atacar
+              if (Input.GetMouseButtonDown(0) && particleAttack != null && canAttack)
             {
                 StartAttack();
             }
@@ -137,8 +131,7 @@ public class PlayerMovement : MonoBehaviour
         {
             UpdateAnimations();
         }
-        // Actualizar posición del punto de ataque según la dirección
-        UpdateAttackPointPosition();
+     
     }
     
     void FixedUpdate()
@@ -221,6 +214,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    
+
     void StartAttack()
     {
         isAttacking = true;
@@ -228,55 +223,16 @@ public class PlayerMovement : MonoBehaviour
         attackTimer = attackDuration;
         attackCooldownTimer = attackCooldown;
         
-        // Realizar el daño
-        PerformAttack();
-        
-        // Activar animación de ataque
-        if (animator != null)
+        // Iniciar el ataque con partículas
+        if (particleAttack != null)
         {
-            // Pasar la dirección del ataque para la animación
-            animator.SetFloat("Ataque", 1);
-            animator.SetFloat("AttHorizontal", GetFacingDirection().x);
-            animator.SetFloat("AttVertical", GetFacingDirection().y);
-            
+            particleAttack.StartAttack(lastMoveDirection);
         }
         
-        Debug.Log("¡Ataque realizado en dirección: " + lastMoveDirection);
-    }
-    
-    void PerformAttack()
-    {
-        // Detectar enemigos en el rango de ataque
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        UpdateAnimations();
         
-        // Dañar a los enemigos
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            // Cambia esto:
-            // EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-            
-            // Por esto:
-            Mabirro enemyScript = enemy.GetComponent<Mabirro>();
-            
-            if (enemyScript != null)
-            {
-                enemyScript.TakeDamage(attackDamage);
-                Debug.Log("Enemigo golpeado: " + enemy.name);
-            }
-        }
-    }
-    
-    void UpdateAttackPointPosition()
-    {
-        if (attackPoint == null) return;
         
-        // Coloca el punto de ataque según la dirección del jugador
-        float offsetDistance = 0.4f; // Distancia desde el centro del jugador
-        attackPoint.localPosition = new Vector3(
-            lastMoveDirection.x * offsetDistance,
-            lastMoveDirection.y * offsetDistance,
-            0
-        );
+        Debug.Log("¡Ataque iniciado!");
     }
 
 
@@ -311,13 +267,13 @@ public class PlayerMovement : MonoBehaviour
         dashTime = dashDuration;
         dashCooldownTime = dashCooldown;
         
-        // Poner invencibilidad (aun no esta implementado)
-        // gameObject.layer = LayerMask.NameToLayer("Invulnerable");
+        // Poner invencibilidad
+        gameObject.layer = 6;
         
         // Efecto visual simple (que aun TAMPOCO existe)
         if (animator != null)
         {
-            animator.SetTrigger("Dash");
+           
         }
         
         Debug.Log("¡Dash iniciado en dirección: " + lastMoveDirection);
@@ -328,7 +284,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         
         // Quitar invuln
-        // gameObject.layer = LayerMask.NameToLayer("Player");
+        gameObject.layer = 3;
         
         // Pequeño frenado al terminar el dash (queda bonito)
         rb.velocity = Vector2.zero;
@@ -338,33 +294,37 @@ public class PlayerMovement : MonoBehaviour
     {
         float velocidadActual = movementInput.magnitude;
         
-        // No actualizar animaciones de movimiento durante el ataque
         if (isAttacking)
         {
-            // Mantener la dirección del ataque durante la animación
-            return;
-        }
+            // Activar animación de ataque
         
-        if (velocidadActual > 0.1f)
+             animator.SetFloat("Horizontal_Idle", 0);
+            animator.SetFloat("Vertical_Idle", 0);
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", 0);
+            animator.SetFloat("Ataque", 1);
+            animator.SetFloat("AttHorizontal", lastMoveDirection.x);
+            animator.SetFloat("AttVertical", lastMoveDirection.y);
+        
+        }   else if (velocidadActual > 0.1f && !isAttacking)
         {
-            animator.SetFloat("Ataque", 0);
             animator.SetFloat("Horizontal_Idle", 0);
             animator.SetFloat("Vertical_Idle", 0);
             animator.SetFloat("Velocidad", 1);
             animator.SetFloat("Horizontal", movementInput.x);
             animator.SetFloat("Vertical", movementInput.y);
-        }
-        else
-        {
             animator.SetFloat("Ataque", 0);
+        }
+            else if(velocidadActual < 0.1f && !isAttacking)
+        {
             animator.SetFloat("Horizontal", 0);
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Velocidad", 0);
-            animator.SetFloat("Horizontal_Idle", GetFacingDirection().x);
-            animator.SetFloat("Vertical_Idle", GetFacingDirection().y);
+            animator.SetFloat("Horizontal_Idle", lastMoveDirection.x);
+            animator.SetFloat("Vertical_Idle", lastMoveDirection.y);
+            animator.SetFloat("Ataque", 0);
         }
     }
-    
     // Método público para obtener la dirección del último movimiento/ataque
     public Vector2 GetFacingDirection()
     {
@@ -383,16 +343,7 @@ public class PlayerMovement : MonoBehaviour
         return isAttacking;
     }
     
-    // Método para debug: visualizar el rango de ataque en el editor
-   // Para revisarlo, abrir la pestaña de escena mientras el juego esta en marcha
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        }
-    }
+
 
 
     void Die()
