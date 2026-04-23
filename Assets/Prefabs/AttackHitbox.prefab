@@ -4878,7 +4878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  lifetime: 0.3
+  lifetime: 0.5
   damageInterval: 0.1
 --- !u!68 &5349494666758673541
 EdgeCollider2D:
