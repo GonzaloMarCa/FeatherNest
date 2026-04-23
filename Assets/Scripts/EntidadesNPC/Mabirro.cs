@@ -266,13 +266,13 @@ public class Mabirro : MonoBehaviour
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
         
-        // Activar animación de muerte, por el momento inútil
+        /* Activar animación de muerte, por el momento inútil
         if (animator != null)
         {
             animator.SetTrigger("Death");
         }
-        
-        // Efecto de muerte
+        */
+        // Efecto de muerte (si lo tuviésemos molaría)
         if (deathEffect != null)
         {
             Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -280,11 +280,11 @@ public class Mabirro : MonoBehaviour
         
         Debug.Log("Mabirro ha sido derrotado");
         
-        // Destruir después de un pequeño retraso (para que se vea la animación)
+        // Destruir después de un pequeño retraso (para que se vea la inexistente animación)
         Destroy(gameObject, 0.5f);
     }
     
-    // MÉTODO PARA DAÑAR AL JUGADOR
+    // Método para dañar al Jugador
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
