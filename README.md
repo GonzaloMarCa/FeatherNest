@@ -8,4 +8,4 @@ Desarrolladores:
 - Saif Latifsadik begum
 - Gonzalo Martínez Cañete
 
-![pio](./ImagenesReadme/pio.jpeg)
+![pio](./ImagenesReadme/pio.jpg)
