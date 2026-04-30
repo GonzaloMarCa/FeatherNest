@@ -30,7 +30,7 @@ public class UICooldownManager : MonoBehaviour
             playerMovement = FindObjectOfType<PlayerMovement>();
         }
         
-        // Obtener las imágenes de relleno de los sliders
+        // Obtiene las imágenes de relleno de los sliders
         if (attackCooldownSlider != null)
         {
             attackFillImage = attackCooldownSlider.fillRect.GetComponent<Image>();
@@ -52,11 +52,11 @@ public class UICooldownManager : MonoBehaviour
     {
         if (playerMovement == null || attackCooldownSlider == null) return;
         
-        // Obtener el progreso del cooldown (0 = en cooldown, 1 = listo)
+        // Recoger el progreso al cd
         float progress = playerMovement.GetAttackCooldownProgress();
         attackCooldownSlider.value = progress;
         
-        // Actualizar texto
+        // Va actualizando el texto según avanza
         float remainingTime = playerMovement.GetAttackCooldownRemaining();
         if (attackCooldownText != null)
         {
@@ -81,11 +81,11 @@ public class UICooldownManager : MonoBehaviour
     {
         if (playerMovement == null || bombCooldownSlider == null) return;
         
-        // Obtener el progreso del cooldown
+        // Recoger el progreso al cd
         float progress = playerMovement.GetBombCooldownProgress();
         bombCooldownSlider.value = progress;
         
-        // Actualizar texto
+        // Va actualizando el texto según avanza
         float remainingTime = playerMovement.GetBombCooldownRemaining();
         if (bombCooldownText != null)
         {
@@ -99,7 +99,7 @@ public class UICooldownManager : MonoBehaviour
             }
         }
         
-        // Cambiar color según estado
+        // Cambia de color según estado (verdo -> listo, blanco -> no listo)
         if (bombFillImage != null)
         {
             bombFillImage.color = progress >= 0.99f ? cooldownReadyColor : cooldownActiveColor;
