@@ -352,4 +352,42 @@ public class PlayerMovement : MonoBehaviour
         // Aquí puedes añadir lógica de muerte (reiniciar nivel, mostrar pantalla de game over, etc.)
         Time.timeScale = 0; // Pausar el juego como ejemplo
     }
+
+
+    // Métodos para el UI (exponer información de cooldown)
+    public float GetAttackCooldownProgress()
+    {
+        if (canAttack) return 1f;
+        if (attackCooldownTimer <= 0) return 1f;
+        return 1f - (attackCooldownTimer / attackCooldown);
+    }
+
+    public float GetAttackCooldownRemaining()
+    {
+        if (canAttack) return 0f;
+        return attackCooldownTimer > 0 ? attackCooldownTimer : 0f;
+    }
+
+    public float GetBombCooldownProgress()
+    {
+        if (bombCooldownTimer <= 0) return 1f;
+        return 1f - (bombCooldownTimer / bombCooldown);
+    }
+
+    public float GetBombCooldownRemaining()
+    {
+        return bombCooldownTimer > 0 ? bombCooldownTimer : 0f;
+    }
+
+    // Para que el UI pueda verificar si el ataque está disponible
+    public bool IsAttackReady()
+    {
+        return canAttack && !isAttacking;
+    }
+
+    // Para la bomba
+    public bool IsBombReady()
+    {
+        return bombCooldownTimer <= 0;
+    }
 }
