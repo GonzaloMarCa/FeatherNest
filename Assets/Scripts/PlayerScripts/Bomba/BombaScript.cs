@@ -105,13 +105,13 @@ public class Bomba : MonoBehaviour
         
         haExplotado = true;
         ExplosionDamage();
-        
+
         if (efectoExplosion != null)
         {
             Instantiate(efectoExplosion, transform.position, Quaternion.identity);
         }
         
-        Destroy(gameObject);
+        Destroy(gameObject);   
     }
     
 

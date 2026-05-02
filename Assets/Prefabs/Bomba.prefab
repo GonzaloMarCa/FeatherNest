@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1895985949972251179}
   - component: {fileID: 8712866155630346188}
-  - component: {fileID: 2404326490438474641}
+  - component: {fileID: 3462092803571610098}
   m_Layer: 0
   m_Name: Bomba
   m_TagString: Untagged
@@ -63,13 +63,13 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &2404326490438474641
+--- !u!114 &3462092803571610098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,9 +82,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiempoExplosion: 3
-  "da\xF1o": 2
+  "da\xF1o": 3
   radioExplosion: 3.5
-  efectoExplosion: {fileID: 0}
+  efectoExplosion: {fileID: 3069408457215705971, guid: 31abba9ed5686114db98fb6ec0ef1e0b, type: 3}
   colorInicial: {r: 1, g: 1, b: 1, a: 1}
   colorFinal: {r: 1, g: 0, b: 0, a: 1}
   intensidadColor:
