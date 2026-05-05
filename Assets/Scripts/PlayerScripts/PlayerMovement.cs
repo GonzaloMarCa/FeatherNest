@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    public static PlayerMovement instance;
+
     [Header("Movimiento")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float dashSpeed = 25f;
@@ -45,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
     private float attackCooldownTimer;
     private bool canAttack = true;
     
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
 
@@ -127,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         // Actualizar animaciones
-        if (!isAttacking)
+        if (!isAttacking && !isDashing)
         {
             UpdateAnimations();
         }
@@ -263,18 +271,22 @@ public class PlayerMovement : MonoBehaviour
         // No se puede dashear mientras se ataca
         if (isAttacking) return;
         
+        if (animator != null)
+        {
+            Debug.Log("Animando dash");
+            animator.SetFloat("Ataque", -1);
+            animator.SetFloat("Velocidad", -1);
+            animator.SetFloat("Horizontal", lastMoveDirection.x);
+            animator.SetFloat("Vertical", lastMoveDirection.y);
+        }
+
         isDashing = true;
         dashTime = dashDuration;
         dashCooldownTime = dashCooldown;
         
         // Poner invencibilidad
         gameObject.layer = 6;
-        
-        // Efecto visual simple (que aun TAMPOCO existe)
-        if (animator != null)
-        {
-           
-        }
+      
         
         Debug.Log("¡Dash iniciado en dirección: " + lastMoveDirection);
     }
@@ -294,36 +306,33 @@ public class PlayerMovement : MonoBehaviour
     {
         float velocidadActual = movementInput.magnitude;
         
-        if (isAttacking)
+        if(IsDashing())
         {
-            // Activar animación de ataque
-        
-            animator.SetFloat("Horizontal_Idle", 0);
-            animator.SetFloat("Vertical_Idle", 0);
-            animator.SetFloat("Horizontal", 0);
-            animator.SetFloat("Vertical", 0);
+            return;
+        }
+
+            animator.SetFloat("Horizontal", lastMoveDirection.x);
+            animator.SetFloat("Vertical", lastMoveDirection.y);
+
+        if (IsAttacking())
+        {
             animator.SetFloat("Ataque", 1);
-            animator.SetFloat("AttHorizontal", lastMoveDirection.x);
-            animator.SetFloat("AttVertical", lastMoveDirection.y);
-        
-        }   else if (velocidadActual > 0.1f && !isAttacking)
-        {
-            animator.SetFloat("Horizontal_Idle", 0);
-            animator.SetFloat("Vertical_Idle", 0);
             animator.SetFloat("Velocidad", 1);
-            animator.SetFloat("Horizontal", movementInput.x);
-            animator.SetFloat("Vertical", movementInput.y);
-            animator.SetFloat("Ataque", 0);
-        }
-            else if(velocidadActual < 0.1f && !isAttacking)
+
+        }   
+            else if (velocidadActual > 0.1f && !IsAttacking())
         {
-            animator.SetFloat("Horizontal", 0);
-            animator.SetFloat("Vertical", 0);
-            animator.SetFloat("Velocidad", 0);
-            animator.SetFloat("Horizontal_Idle", lastMoveDirection.x);
-            animator.SetFloat("Vertical_Idle", lastMoveDirection.y);
-            animator.SetFloat("Ataque", 0);
+            animator.SetFloat("Ataque", -1);
+            animator.SetFloat("Velocidad", 1);
+            
         }
+            else if(velocidadActual < 0.1f && !IsAttacking())
+        {
+            animator.SetFloat("Velocidad", -1);
+            animator.SetFloat("Ataque", 1);
+        }
+
+            
     }
     // Método público para obtener la dirección del último movimiento/ataque
     public Vector2 GetFacingDirection()
@@ -349,7 +358,7 @@ public class PlayerMovement : MonoBehaviour
     void Die()
     {
         Debug.Log("Jugador ha muerto");
-        // Aquí puedes añadir lógica de muerte (reiniciar nivel, mostrar pantalla de game over, etc.)
+        // Aquí se añadirá lógica de muerte (reiniciar nivel, mostrar pantalla de game over, etc.)
         Time.timeScale = 0; // Pausar el juego como ejemplo
     }
 
