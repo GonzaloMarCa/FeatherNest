@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|c:\\users\\gokir\\documents\\github\\feathernest\\assets\\scripts\\playerscripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|c:\\users\\gokir\\documents\\github\\feathernest\\assets\\scripts\\entidadesnpc\\mabirro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\entidadesnpc\\mabirro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -23,6 +27,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CameraFollow.cs",
+              "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerScripts\\CameraFollow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\CameraFollow.cs",
+              "ToolTip": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerScripts\\CameraFollow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerScripts\\CameraFollow.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T15:47:33.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Mabirro.cs",
               "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\EntidadesNPC\\Mabirro.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EntidadesNPC\\Mabirro.cs",
@@ -35,7 +52,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
