@@ -169,12 +169,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
         {
-            // Si está dash, no recibe daño (invulnerabilidad)
             Debug.Log("¡Dash! Invulnerable al daño");
             return;
         }
         
         currentHealth -= damage;
+        currentHealth = Mathf.Max(0, currentHealth); // No bajar de 0
+        
         Debug.Log($"Jugador recibió {damage} de daño. Salud: {currentHealth}/{maxHealth}");
         
         // Efecto visual de daño
@@ -185,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
             Die();
         }
     }
+
 
     IEnumerator FlashRed()
     {
@@ -334,6 +336,17 @@ public class PlayerMovement : MonoBehaviour
 
             
     }
+
+    public void Heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        currentHealth = Mathf.Min(maxHealth, currentHealth);
+        Debug.Log($"Jugador curado. Salud: {currentHealth}/{maxHealth}");
+
+    }
+
+
+
     // Método público para obtener la dirección del último movimiento/ataque
     public Vector2 GetFacingDirection()
     {
@@ -398,5 +411,17 @@ public class PlayerMovement : MonoBehaviour
     public bool IsBombReady()
     {
         return bombCooldownTimer <= 0;
+    }    
+    
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+
 }
