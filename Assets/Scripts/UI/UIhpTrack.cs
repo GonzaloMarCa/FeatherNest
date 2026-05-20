@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -116,32 +117,28 @@ public class UIhpTrack : MonoBehaviour
     {
         Image img = pluma.GetComponent<Image>();
         RectTransform rect = pluma.GetComponent<RectTransform>();
-        Color colorOriginal = img.color;
+        
         
         // Animación de escala (crece ligeramente)
         float tiempo = 0;
         Vector3 escalaOriginal = rect.localScale;
-        
+        pluma.GetComponent<Graphic>().color = new Color(0,0,0,0.7f);
         while (tiempo < animacionDuracion / 2)
         {
             tiempo += Time.deltaTime;
             float t = tiempo / (animacionDuracion / 2);
-            rect.localScale = escalaOriginal * (1 + (1 - t) * 0.3f);
+            rect.localScale = escalaOriginal * (1 + (1 - t) * 0.4f);
             yield return null;
         }
         
-        // Cambiar color a negro con opacidad
-        float fadeTime = animacionDuracion / 4;
-        tiempo = 0;
-        Color colorObjetivo = new Color(0, 0, 0, 0.7f); // Negro con 70% opacidad
         
-        while (tiempo < fadeTime)
-        {
-            tiempo += Time.deltaTime;
-            float t = tiempo / fadeTime;
-            img.color = Color.Lerp(colorOriginal, colorObjetivo, t);
-            yield return null;
-        }
+        //Explicación del código para mí mismo, que esto no iba:
+        //Primero: Reorganizar las escalas para que se haga grande al recibir el golpe y encoja hasta el tamaño original posteriormente
+        //Segundo: En la línea 125 (pluma.getComponent...) estaba recogiendo el componente "Image" pero con ese saltaba error de objeto vacío,
+        //          había que recoger el componente graphic que contiene la parte visual
+        //Tercero: Se tiene que introducir el objeto como parámetro del Enumerator para no pintar todas simultáneamente y pintar sólo la correspondiente
+        
+    
         
         // Animación de contracción
         tiempo = 0;
@@ -149,13 +146,13 @@ public class UIhpTrack : MonoBehaviour
         {
             tiempo += Time.deltaTime;
             float t = tiempo / (animacionDuracion / 2);
-            rect.localScale = escalaOriginal * (1 - t * 0.2f);
+            rect.localScale = escalaOriginal;
             yield return null;
         }
         
-        rect.localScale = escalaOriginal;
+        //rect.localScale = escalaOriginal;
     }
-    
+
     // Método público para recargar todas las vidas
     public void ResetLives(int maxLives)
     {
