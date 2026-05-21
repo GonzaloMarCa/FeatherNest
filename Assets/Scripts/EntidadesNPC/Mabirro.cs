@@ -15,7 +15,7 @@ public class Mabirro : MonoBehaviour
     
     [Header("Configuración de Salud")]
     [SerializeField] private int maxHealth = 3;
-    [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private float knockbackForce = 10f;
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private GameObject deathEffect;
     
@@ -44,7 +44,7 @@ public class Mabirro : MonoBehaviour
     
     void Start()
     {
-        gameObject.layer = capaEnemigo;
+        gameObject.layer = 8;
         rb = GetComponent<Rigidbody2D>();
         animator = hijoVisual?.GetComponent<Animator>();
         spriteRenderer = hijoVisual?.GetComponent<SpriteRenderer>();
@@ -68,9 +68,10 @@ public class Mabirro : MonoBehaviour
     void Update()
     {
         if (isDead) return;
-        
+    
+
         bool playerDetected = IsPlayerDetected();
-        
+
         if (playerDetected)
         {
             MoveTowardsPlayerWithAvoidance();
@@ -86,6 +87,7 @@ public class Mabirro : MonoBehaviour
     void FixedUpdate()
     {
         if (isDead || empuje) return;
+        rb.velocity = new Vector2(0,0);
         rb.velocity = currentDirection * moveSpeed;
     }
     
@@ -176,8 +178,7 @@ public class Mabirro : MonoBehaviour
         }
         
         // Parámetro opcional para saber si está persiguiendo
-        bool isChasing = IsPlayerDetected();
-        animator.SetBool("IsChasing", isChasing);
+
     }
     
     // MÉTODO PARA RECIBIR DAÑO (llamado desde el jugador)
@@ -191,7 +192,10 @@ public class Mabirro : MonoBehaviour
         StartCoroutine(FlashRed());
         
         // Efecto de knockback
-        ApplyKnockback();
+        if(empuje == false && currentHealth > 0)
+        {
+            ApplyKnockback();   
+        }
         
         Debug.Log($"Mabirro recibió {damage} de daño. Salud restante: {currentHealth}");
         
@@ -215,7 +219,9 @@ public class Mabirro : MonoBehaviour
     void ApplyKnockback()
     {
         if (player == null) return;
+
         empuje = true;
+
         // Dirección desde el jugador hacia el enemigo
         Vector2 knockbackDirection = (transform.position - player.position).normalized;
         rb.velocity = knockbackDirection * knockbackForce;
@@ -226,18 +232,25 @@ public class Mabirro : MonoBehaviour
     
     IEnumerator ResetKnockback()
     {
-        float originalSpeed = moveSpeed;
-        moveSpeed = 0; // Detener movimiento temporalmente
-        bool empuje = false;
-        yield return new WaitForSeconds(0.2f);
-        moveSpeed = originalSpeed;
-        
+        //bug knockback infinito corregido (motivo de celebración)
+        //Primero espera para que afecte el knockback
+        yield return new WaitForSeconds(0.3f);
+
+        //Después reestablece el empuje y aplica la velocidad de 0 para que reanude la marcha. Por último, desactiva el bool.
+        rb.velocity = new Vector2(0,0);
+        rb.velocity = currentDirection * moveSpeed;
+
+        //el error era que aqui creaba un nuevo bool en vez de usar el empuje.
+        empuje = false;
     }
-    
+
+
+
     IEnumerator FlashRed()
     {
         if (spriteRenderer != null)
         {
+            //Recoge el sprite y le pinta de rojo temporalmente para indicar el golpe
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(flashDuration);
             spriteRenderer.color = originalColor;
@@ -253,13 +266,13 @@ public class Mabirro : MonoBehaviour
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
         
-        // Activar animación de muerte
+        /* Activar animación de muerte, por el momento inútil
         if (animator != null)
         {
             animator.SetTrigger("Death");
         }
-        
-        // Efecto de muerte
+        */
+        // Efecto de muerte (si lo tuviésemos molaría)
         if (deathEffect != null)
         {
             Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -267,11 +280,11 @@ public class Mabirro : MonoBehaviour
         
         Debug.Log("Mabirro ha sido derrotado");
         
-        // Destruir después de un pequeño retraso (para que se vea la animación)
+        // Destruir después de un pequeño retraso (para que se vea la inexistente animación)
         Destroy(gameObject, 0.5f);
     }
     
-    // MÉTODO PARA DAÑAR AL JUGADOR
+    // Método para dañar al Jugador
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
@@ -285,7 +298,7 @@ public class Mabirro : MonoBehaviour
             rb.velocity = bounceDirection * moveSpeed * 0.5f;
         }
         
-        Debug.Log("checkeando si se pega con jugador");
+        Debug.Log("comprobando si se pega con jugador");
         // Colisión con el jugador
         if (collision.gameObject.CompareTag("Player") && canAttack)
         {
