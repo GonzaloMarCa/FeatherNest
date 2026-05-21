@@ -3,20 +3,23 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    public static PlayerMovement instance;
+
     [Header("Movimiento")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float dashSpeed = 25f;
     [SerializeField] private float dashDuration = 0.25f;
     [SerializeField] private float dashCooldown = 0.5f;
     
-    [Header("Ataque")]
-    [SerializeField] private float attackDuration = 0.3f;
-    [SerializeField] private float attackCooldown = 0.5f;
-    [SerializeField] private Transform attackPoint; // Punto desde donde se genera el ataque
-    [SerializeField] private float attackRange = 1f; // Rango del ataque
-    [SerializeField] private LayerMask enemyLayers; // Capas que puede dañar
-    [SerializeField] private int attackDamage = 1; // Daño del ataque
     
+
+    [Header("Ataque con Partículas")]
+    [SerializeField] private ParticleAttack particleAttack;
+    [SerializeField] private float attackDuration = 0.3f; // Reduce a 0.3
+    [SerializeField] private float attackCooldown = 0.5f; // Reduce a 0.5
+
+
     [Header("Referencias")]
     private Rigidbody2D rb;
     private Animator animator;
@@ -25,6 +28,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("Salud del Jugador")]
     [SerializeField] private int maxHealth = 5;
     private int currentHealth;
+
+
+    [Header("Bomba")]
+    [SerializeField] private GameObject bombPrefab; //Bombardo Gerardo
+    [SerializeField] private float bombCooldown = 5f; // Tiempo de cooldown de la bomba
+    private float bombCooldownTimer = 0f; // Temporizador para el cooldown
     
     // Variables de estado
     private Vector2 movementInput;
@@ -39,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
     private float attackCooldownTimer;
     private bool canAttack = true;
     
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
 
@@ -51,13 +65,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         // Crear attackPoint si no existe
-        if (attackPoint == null)
-        {
-            GameObject attackPointObj = new GameObject("AttackPoint");
-            attackPointObj.transform.parent = transform;
-            attackPointObj.transform.localPosition = Vector3.zero;
-            attackPoint = attackPointObj.transform;
-        }
+       
         
         // Dirección inicial por defecto
         lastMoveDirection = Vector2.down;
@@ -92,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             }
             
             // Inicio ataque
-            if (Input.GetMouseButtonDown(0) && canAttack) // Click izquierdo para atacar
+              if (Input.GetMouseButtonDown(0) && particleAttack != null && canAttack)
             {
                 StartAttack();
             }
@@ -102,6 +110,12 @@ public class PlayerMovement : MonoBehaviour
         if (dashCooldownTime > 0)
         {
             dashCooldownTime -= Time.deltaTime;
+        }
+
+        // Cooldown de la bomba
+        if (bombCooldownTimer > 0)
+        {
+            bombCooldownTimer -= Time.deltaTime;
         }
         
         // Terminar dash
@@ -113,12 +127,19 @@ public class PlayerMovement : MonoBehaviour
                 StopDash();
             }
         }
+
+        // Tecla F para poner bomba
+        if (Input.GetKeyDown(KeyCode.F)) 
+        {
+            SetBomb();
+        }
         
         // Actualizar animaciones
-        UpdateAnimations();
-        
-        // Actualizar posición del punto de ataque según la dirección
-        UpdateAttackPointPosition();
+        if (!isAttacking && !isDashing)
+        {
+            UpdateAnimations();
+        }
+     
     }
     
     void FixedUpdate()
@@ -148,12 +169,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
         {
-            // Si está dash, no recibe daño (invulnerabilidad)
             Debug.Log("¡Dash! Invulnerable al daño");
             return;
         }
         
         currentHealth -= damage;
+        currentHealth = Mathf.Max(0, currentHealth); // No bajar de 0
+        
         Debug.Log($"Jugador recibió {damage} de daño. Salud: {currentHealth}/{maxHealth}");
         
         // Efecto visual de daño
@@ -165,12 +187,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     IEnumerator FlashRed()
     {
         SpriteRenderer sr = hijoVisual.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            Color originalColor = sr.color;
+            //problema respecto al color arreglado :D:D
+            Color originalColor = Color.white;
             sr.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             sr.color = originalColor;
@@ -200,6 +224,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    
+
     void StartAttack()
     {
         isAttacking = true;
@@ -207,73 +233,62 @@ public class PlayerMovement : MonoBehaviour
         attackTimer = attackDuration;
         attackCooldownTimer = attackCooldown;
         
-        // Realizar el daño
-        PerformAttack();
-        
-        // Activar animación de ataque
-        if (animator != null)
+        // Iniciar el ataque con partículas
+        if (particleAttack != null)
         {
-            animator.SetTrigger("Attack");
-            // Pasar la dirección del ataque para la animación
-            animator.SetFloat("AttackHorizontal", lastMoveDirection.x);
-            animator.SetFloat("AttackVertical", lastMoveDirection.y);
+            particleAttack.StartAttack(lastMoveDirection);
         }
         
-        Debug.Log("¡Ataque realizado en dirección: " + lastMoveDirection);
+        UpdateAnimations();
+        
+        
+        Debug.Log("¡Ataque iniciado!");
     }
-    
-void PerformAttack()
-{
-    // Detectar enemigos en el rango de ataque
-    Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-    
-    // Dañar a los enemigos
-    foreach (Collider2D enemy in hitEnemies)
+
+
+    void SetBomb()
     {
-        // Cambia esto:
-        // EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-        
-        // Por esto:
-        Mabirro enemyScript = enemy.GetComponent<Mabirro>();
-        
-        if (enemyScript != null)
+        // Revisa si está en cooldown
+        if (bombCooldownTimer > 0)
         {
-            enemyScript.TakeDamage(attackDamage);
-            Debug.Log("Enemigo golpeado: " + enemy.name);
+            Debug.Log($"Bomba en cooldown. Espera {bombCooldownTimer:F1} segundos");
+            return;
         }
-    }
-}
-    
-    void UpdateAttackPointPosition()
-    {
-        if (attackPoint == null) return;
         
-        // Posicionar el punto de ataque según la dirección del jugador
-        float offsetDistance = 0.4f; // Distancia desde el centro del jugador
-        attackPoint.localPosition = new Vector3(
-            lastMoveDirection.x * offsetDistance,
-            lastMoveDirection.y * offsetDistance,
-            0
-        );
+        // Revisa si el prefab existe
+        if (bombPrefab != null)
+        {
+            Instantiate(bombPrefab, new Vector2(transform.position.x, (float)transform.position.y), Quaternion.identity);
+            bombCooldownTimer = bombCooldown;
+            Debug.Log("¡Bomba colocada!");
+        }
+        else
+        {
+            Debug.LogError("No se ha asignado el prefab de la bomba en el inspector");
+        }
     }
     
     void StartDash()
     {
-        // No se puede hacer dash mientras se ataca
+        // No se puede dashear mientras se ataca
         if (isAttacking) return;
         
+        if (animator != null)
+        {
+            Debug.Log("Animando dash");
+            animator.SetFloat("Ataque", -1);
+            animator.SetFloat("Velocidad", -1);
+            animator.SetFloat("Horizontal", lastMoveDirection.x);
+            animator.SetFloat("Vertical", lastMoveDirection.y);
+        }
+
         isDashing = true;
         dashTime = dashDuration;
         dashCooldownTime = dashCooldown;
         
-        // Poner invuln
-        // gameObject.layer = LayerMask.NameToLayer("Invulnerable");
-        
-        // Efecto visual simple (opcional)
-        if (animator != null)
-        {
-            animator.SetTrigger("Dash");
-        }
+        // Poner invencibilidad
+        gameObject.layer = 6;
+      
         
         Debug.Log("¡Dash iniciado en dirección: " + lastMoveDirection);
     }
@@ -283,9 +298,9 @@ void PerformAttack()
         isDashing = false;
         
         // Quitar invuln
-        // gameObject.layer = LayerMask.NameToLayer("Player");
+        gameObject.layer = 3;
         
-        // Pequeño frenado al terminar el dash (opcional)
+        // Pequeño frenado al terminar el dash (queda bonito)
         rb.velocity = Vector2.zero;
     }
     
@@ -293,31 +308,45 @@ void PerformAttack()
     {
         float velocidadActual = movementInput.magnitude;
         
-        // No actualizar animaciones de movimiento durante el ataque
-        if (isAttacking)
+        if(IsDashing())
         {
-            // Mantener la dirección del ataque durante la animación
             return;
         }
-        
-        if (velocidadActual > 0.1f)
+
+            animator.SetFloat("Horizontal", lastMoveDirection.x);
+            animator.SetFloat("Vertical", lastMoveDirection.y);
+
+        if (IsAttacking())
         {
-            animator.SetFloat("Horizontal_Idle", 0);
-            animator.SetFloat("Vertical_Idle", 0);
+            animator.SetFloat("Ataque", 1);
             animator.SetFloat("Velocidad", 1);
-            animator.SetFloat("Horizontal", movementInput.x);
-            animator.SetFloat("Vertical", movementInput.y);
-        }
-        else
+
+        }   
+            else if (velocidadActual > 0.1f && !IsAttacking())
         {
-            animator.SetFloat("Horizontal", 0);
-            animator.SetFloat("Vertical", 0);
-            animator.SetFloat("Velocidad", 0);
-            animator.SetFloat("Horizontal_Idle", GetFacingDirection().x);
-            animator.SetFloat("Vertical_Idle", GetFacingDirection().y);
+            animator.SetFloat("Ataque", -1);
+            animator.SetFloat("Velocidad", 1);
+            
         }
+            else if(velocidadActual < 0.1f && !IsAttacking())
+        {
+            animator.SetFloat("Velocidad", -1);
+            animator.SetFloat("Ataque", 1);
+        }
+
+            
     }
-    
+
+    public void Heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        currentHealth = Mathf.Min(maxHealth, currentHealth);
+        Debug.Log($"Jugador curado. Salud: {currentHealth}/{maxHealth}");
+
+    }
+
+
+
     // Método público para obtener la dirección del último movimiento/ataque
     public Vector2 GetFacingDirection()
     {
@@ -336,21 +365,63 @@ void PerformAttack()
         return isAttacking;
     }
     
-    // Método para debug: visualizar el rango de ataque en el editor
-    void OnDrawGizmosSelected()
-    {
-        if (attackPoint != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        }
-    }
+
 
 
     void Die()
     {
         Debug.Log("Jugador ha muerto");
-        // Aquí puedes añadir lógica de muerte (reiniciar nivel, mostrar pantalla de game over, etc.)
+        // Aquí se añadirá lógica de muerte (reiniciar nivel, mostrar pantalla de game over, etc.)
         Time.timeScale = 0; // Pausar el juego como ejemplo
     }
+
+
+    // Métodos para el UI (exponer información de cooldown)
+    public float GetAttackCooldownProgress()
+    {
+        if (canAttack) return 1f;
+        if (attackCooldownTimer <= 0) return 1f;
+        return 1f - (attackCooldownTimer / attackCooldown);
+    }
+
+    public float GetAttackCooldownRemaining()
+    {
+        if (canAttack) return 0f;
+        return attackCooldownTimer > 0 ? attackCooldownTimer : 0f;
+    }
+
+    public float GetBombCooldownProgress()
+    {
+        if (bombCooldownTimer <= 0) return 1f;
+        return 1f - (bombCooldownTimer / bombCooldown);
+    }
+
+    public float GetBombCooldownRemaining()
+    {
+        return bombCooldownTimer > 0 ? bombCooldownTimer : 0f;
+    }
+
+    // Para que el UI pueda verificar si el ataque está disponible
+    public bool IsAttackReady()
+    {
+        return canAttack && !isAttacking;
+    }
+
+    // Para la bomba
+    public bool IsBombReady()
+    {
+        return bombCooldownTimer <= 0;
+    }    
+    
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+
 }

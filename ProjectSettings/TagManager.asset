@@ -39,9 +39,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fondo
+    uniqueID: 2850277901
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Characters
     uniqueID: 199769183
+    locked: 0
+  - name: Muros
+    uniqueID: 2834385155
     locked: 0
