@@ -258,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
         // Revisa si el prefab existe
         if (bombPrefab != null)
         {
-            Instantiate(bombPrefab, new Vector2(transform.position.x, (float)(transform.position.y - 0.5)), Quaternion.identity);
+            Instantiate(bombPrefab, new Vector2(transform.position.x, (float)transform.position.y), Quaternion.identity);
             bombCooldownTimer = bombCooldown;
             Debug.Log("¡Bomba colocada!");
         }
