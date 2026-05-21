@@ -262,16 +262,21 @@ public class Mabirro : MonoBehaviour
         isDead = true;
         rb.velocity = Vector2.zero;
         
+
+ 
+        // Notificar al generador que este enemigo murió
+        Generador generador = FindObjectOfType<Generador>();
+        if (generador != null)
+        {
+            generador.RemoverEnemigo(gameObject);
+        }
+
         // Desactivar collider para no interactuar más
         Collider2D col = GetComponent<Collider2D>();
         if (col != null) col.enabled = false;
         
-        /* Activar animación de muerte, por el momento inútil
-        if (animator != null)
-        {
-            animator.SetTrigger("Death");
-        }
-        */
+        
+        
         // Efecto de muerte (si lo tuviésemos molaría)
         if (deathEffect != null)
         {

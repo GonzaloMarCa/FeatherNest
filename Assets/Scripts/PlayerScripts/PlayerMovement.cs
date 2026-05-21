@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Salud del Jugador")]
     [SerializeField] private int maxHealth = 5;
+    private UIhpTrack Vidas;
+    [SerializeField] public GameObject marcoVidas;
     private int currentHealth;
 
 
@@ -56,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
 
+
+        Vidas = marcoVidas.GetComponent<UIhpTrack>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         animator = hijoVisual.GetComponent<Animator>();
@@ -339,8 +343,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Heal(int healAmount)
     {
+        Debug.Log("curando");
         currentHealth += healAmount;
         currentHealth = Mathf.Min(maxHealth, currentHealth);
+        Vidas.ActualizarVidas(1);
         Debug.Log($"Jugador curado. Salud: {currentHealth}/{maxHealth}");
 
     }

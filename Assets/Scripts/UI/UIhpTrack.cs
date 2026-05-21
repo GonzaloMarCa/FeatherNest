@@ -58,29 +58,34 @@ public class UIhpTrack : MonoBehaviour
         plumasList.Clear();
         
         // Crear nuevas plumas
-        for (int i = 0; i < cantidad; i++)
+        for (int i = 0; i < 5; i++)
         {
             GameObject nuevaPluma = Instantiate(plumaPrefab, livesContainer);
             nuevaPluma.name = $"Pluma_{i}";
             
-            // Configurar imagen
+            // Configura la imagen de estas
             Image img = nuevaPluma.GetComponent<Image>();
             if (img != null && plumaActiva != null)
             {
                 img.sprite = plumaActiva;
             }
+            if(i >= cantidad)
+            {
+                nuevaPluma.GetComponent<Graphic>().color = new Color(0,0,0,0.7f);
+            }
+            
             
             plumasList.Add(nuevaPluma);
         }
     }
     
-    void ActualizarVidas(int nuevasVidas)
+    public void ActualizarVidas(int nuevasVidas)
     {
         int vidasPerdidas = currentLives - nuevasVidas;
         
         if (vidasPerdidas > 0)
         {
-            // Perdió vidas
+            // Pérdida de vidas
             for (int i = currentLives - 1; i >= nuevasVidas; i--)
             {
                 if (i < plumasList.Count)
@@ -105,8 +110,7 @@ public class UIhpTrack : MonoBehaviour
         }
         else if (vidasPerdidas < 0)
         {
-            // Ganó vidas (si tu juego permite ganar vidas)
-            // Recargar todas las plumas
+            // Recargar plumas
             CrearPlumas(nuevasVidas);
         }
         
@@ -150,8 +154,10 @@ public class UIhpTrack : MonoBehaviour
             yield return null;
         }
         
-        //rect.localScale = escalaOriginal;
+        
     }
+
+    
 
     // Método público para recargar todas las vidas
     public void ResetLives(int maxLives)
