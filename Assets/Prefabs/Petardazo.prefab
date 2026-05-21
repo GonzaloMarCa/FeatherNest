@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2491581057445412601}
   - component: {fileID: 7209085199150087801}
   - component: {fileID: 6871954069507478242}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Petardazo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4807,9 +4807,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1460582141
+  m_SortingLayer: 2
+  m_SortingOrder: 20
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -4894,7 +4894,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1460582141
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 20
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
