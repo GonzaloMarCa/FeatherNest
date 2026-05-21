@@ -71,11 +71,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-<<<<<<< HEAD
     fileImportMode: 1
-=======
-    fileImportMode: 0
->>>>>>> 9b7eb82b4622f0dc5c6be3f3bf4d1ad8557713b8
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -88,11 +84,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-<<<<<<< HEAD
     fileImportMode: 1
-=======
-    fileImportMode: 0
->>>>>>> 9b7eb82b4622f0dc5c6be3f3bf4d1ad8557713b8
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -105,11 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-<<<<<<< HEAD
   platformSettingsDirtyTick: 0
-=======
-  platformSettingsDirtyTick: 639148044933048030
->>>>>>> 9b7eb82b4622f0dc5c6be3f3bf4d1ad8557713b8
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -144,7 +132,7 @@ ScriptedImporter:
       y: 21
       width: 12
       height: 5
-    spriteID: 6bed76a393fb7534784646dd2dd8e43d
+    spriteID: 22a3cbb7f16bc964789a95441c62f646
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -164,7 +152,7 @@ ScriptedImporter:
       y: 4
       width: 14
       height: 9
-    spriteID: 6d0c94a313efcaa438c144e87f20b4ee
+    spriteID: b2e4b3936b8468e45be603633e48b673
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -184,7 +172,7 @@ ScriptedImporter:
       y: 109
       width: 16
       height: 10
-    spriteID: 4e28b24c627a74a41a84987338d16960
+    spriteID: 91fbdafc25e1bef4ba77b1526265e794
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -204,7 +192,7 @@ ScriptedImporter:
       y: 104
       width: 20
       height: 17
-    spriteID: 3fa18ec836e792848955dc287321f377
+    spriteID: fcfbb1226a2e0984991fd4e1506b505d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -224,7 +212,7 @@ ScriptedImporter:
       y: 74
       width: 20
       height: 22
-    spriteID: 86410f19878013941b20fa38774533d7
+    spriteID: 2c93cce9dc480cc4f980f1afa80989da
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -244,7 +232,7 @@ ScriptedImporter:
       y: 4
       width: 20
       height: 22
-    spriteID: 66b4608e701d65a4e9133373527c1150
+    spriteID: 906f28e10e04f8b4a924c584a8e268a5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -264,7 +252,7 @@ ScriptedImporter:
       y: 34
       width: 20
       height: 22
-    spriteID: 7f3fd65f7eebc5d49a37d02d2710b943
+    spriteID: 512890a17427920408304fd9aac588e5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -284,7 +272,7 @@ ScriptedImporter:
       y: 64
       width: 20
       height: 22
-    spriteID: 18757d36cda43054dacccb7746df9109
+    spriteID: 52dc1c75bf7212741b3939c11248b3f7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -304,7 +292,7 @@ ScriptedImporter:
       y: 94
       width: 20
       height: 22
-    spriteID: d7895004abe674b4dae04272b7bfb46f
+    spriteID: 8e4b9f5db7c040441af871ac082f383b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -324,7 +312,7 @@ ScriptedImporter:
       y: 4
       width: 26
       height: 27
-    spriteID: d05793fbd0b5a5b4291df2df5fe782be
+    spriteID: 506830a25b63b894985401089a3ddb37
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -344,7 +332,7 @@ ScriptedImporter:
       y: 39
       width: 26
       height: 27
-    spriteID: 524e57274deb4914eb7d4a27cf2c3efa
+    spriteID: a1e36cbb0d82ddc4da85cce6a2c3b00f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -364,7 +352,7 @@ ScriptedImporter:
       y: 74
       width: 26
       height: 27
-    spriteID: 46e23a8980402c14c8195ed9608040ce
+    spriteID: db100ec02add3944ea49e0173fe30656
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -384,7 +372,7 @@ ScriptedImporter:
       y: 4
       width: 24
       height: 27
-    spriteID: 3ac866a02e78f97459c1c637e6e07461
+    spriteID: d8cec6275e8c2bf4194af7d54fdf65a4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -404,7 +392,7 @@ ScriptedImporter:
       y: 39
       width: 20
       height: 27
-    spriteID: e033806cadea13746869e37b4954241f
+    spriteID: fdfad7046dc317e429c0393aa0fb81d4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -413,291 +401,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 38, y: 39}
-<<<<<<< HEAD
   spriteSheetImportData: []
-=======
-  spriteSheetImportData:
-  - name: fantasbirro_0
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 109
-      width: 16
-      height: 10
-    spriteID: d47b4e5c51fff044c97c95c21c085add
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 104
-      width: 20
-      height: 17
-    spriteID: 22cace626e8c0f94dbcde45d85916c1a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_2
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 70
-      y: 94
-      width: 20
-      height: 22
-    spriteID: 3eea4438ed98e9643a2f2d5322d42865
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 74
-      width: 26
-      height: 27
-    spriteID: 356a365910993cd459d71a22aa5b7fac
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 74
-      width: 20
-      height: 22
-    spriteID: 19331e7d37877fe4cbc288325d8807f8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_5
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 70
-      y: 64
-      width: 20
-      height: 22
-    spriteID: ffbbc8e3b63be164fbc220c08d1b0c23
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_6
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 39
-      width: 26
-      height: 27
-    spriteID: fb5240bc19ef63b41b33f940f6f2b369
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_7
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 39
-      width: 20
-      height: 27
-    spriteID: 86dd2b1b9f0056845acb8f3005a09462
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_8
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 70
-      y: 34
-      width: 20
-      height: 22
-    spriteID: 012ea2b7b2a5ff6408ab1e04c82cd3ca
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_9
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 26
-      height: 27
-    spriteID: 232e3d133b95bf34abad39dfdd19efc6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_10
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 38
-      y: 4
-      width: 24
-      height: 27
-    spriteID: 460ad70a0bbc2294f903979879aac789
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_11
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 70
-      y: 4
-      width: 20
-      height: 22
-    spriteID: 13866201c0a3524429ba92386422bc1d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_12
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 98
-      y: 21
-      width: 12
-      height: 5
-    spriteID: 91177f516a845c44aa72af371e8b5131
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: fantasbirro_13
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 98
-      y: 4
-      width: 14
-      height: 9
-    spriteID: bcf90eddcfcedad4da1d4bb8c99197d6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
->>>>>>> 9b7eb82b4622f0dc5c6be3f3bf4d1ad8557713b8
   asepriteLayers:
   - layerIndex: 0
     guid: -1578174193
@@ -714,7 +418,7 @@ ScriptedImporter:
         y: 0
         width: 12
         height: 5
-      spriteId: 6bed76a393fb7534784646dd2dd8e43d
+      spriteId: 22a3cbb7f16bc964789a95441c62f646
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -723,7 +427,7 @@ ScriptedImporter:
         y: 0
         width: 14
         height: 9
-      spriteId: 6d0c94a313efcaa438c144e87f20b4ee
+      spriteId: b2e4b3936b8468e45be603633e48b673
     - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -732,7 +436,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 10
-      spriteId: 4e28b24c627a74a41a84987338d16960
+      spriteId: 91fbdafc25e1bef4ba77b1526265e794
     - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -741,7 +445,7 @@ ScriptedImporter:
         y: 0
         width: 20
         height: 17
-      spriteId: 3fa18ec836e792848955dc287321f377
+      spriteId: fcfbb1226a2e0984991fd4e1506b505d
     - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
@@ -750,7 +454,7 @@ ScriptedImporter:
         y: 0
         width: 20
         height: 22
-      spriteId: 86410f19878013941b20fa38774533d7
+      spriteId: 2c93cce9dc480cc4f980f1afa80989da
     - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
@@ -759,7 +463,7 @@ ScriptedImporter:
         y: 0
         width: 20
         height: 22
-      spriteId: 66b4608e701d65a4e9133373527c1150
+      spriteId: 906f28e10e04f8b4a924c584a8e268a5
     - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
@@ -768,7 +472,7 @@ ScriptedImporter:
         y: 0
         width: 20
         height: 22
-      spriteId: 7f3fd65f7eebc5d49a37d02d2710b943
+      spriteId: 512890a17427920408304fd9aac588e5
     - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
@@ -777,7 +481,7 @@ ScriptedImporter:
         y: 0
         width: 20
         height: 22
-      spriteId: 18757d36cda43054dacccb7746df9109
+      spriteId: 52dc1c75bf7212741b3939c11248b3f7
     - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
@@ -786,7 +490,7 @@ ScriptedImporter:
         y: 0
         width: 20
         height: 22
-      spriteId: d7895004abe674b4dae04272b7bfb46f
+      spriteId: 8e4b9f5db7c040441af871ac082f383b
     - name: Frame_9
       frameIndex: 9
       additiveSortOrder: 0
@@ -795,7 +499,7 @@ ScriptedImporter:
         y: 1
         width: 26
         height: 27
-      spriteId: d05793fbd0b5a5b4291df2df5fe782be
+      spriteId: 506830a25b63b894985401089a3ddb37
     - name: Frame_10
       frameIndex: 10
       additiveSortOrder: 0
@@ -804,7 +508,7 @@ ScriptedImporter:
         y: 1
         width: 26
         height: 27
-      spriteId: 524e57274deb4914eb7d4a27cf2c3efa
+      spriteId: a1e36cbb0d82ddc4da85cce6a2c3b00f
     - name: Frame_11
       frameIndex: 11
       additiveSortOrder: 0
@@ -813,7 +517,7 @@ ScriptedImporter:
         y: 1
         width: 26
         height: 27
-      spriteId: 46e23a8980402c14c8195ed9608040ce
+      spriteId: db100ec02add3944ea49e0173fe30656
     - name: Frame_12
       frameIndex: 12
       additiveSortOrder: 0
@@ -822,7 +526,7 @@ ScriptedImporter:
         y: 1
         width: 24
         height: 27
-      spriteId: 3ac866a02e78f97459c1c637e6e07461
+      spriteId: d8cec6275e8c2bf4194af7d54fdf65a4
     - name: Frame_13
       frameIndex: 13
       additiveSortOrder: 0
@@ -831,7 +535,7 @@ ScriptedImporter:
         y: 1
         width: 20
         height: 27
-      spriteId: e033806cadea13746869e37b4954241f
+      spriteId: fdfad7046dc317e429c0393aa0fb81d4
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -847,33 +551,6 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-<<<<<<< HEAD
-=======
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
->>>>>>> 9b7eb82b4622f0dc5c6be3f3bf4d1ad8557713b8
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
