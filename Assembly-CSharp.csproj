@@ -63,9 +63,12 @@
     <Compile Include="Assets\Scripts\PlayerScripts\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\UI\UICooldownManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\BombaScript.cs" />
+    <Compile Include="Assets\Scripts\UI\UIhpTrack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Escena\CajaScript.cs" />
     <Compile Include="Assets\Scripts\EntidadesNPC\Mabirro.cs" />
     <Compile Include="Assets\Scripts\Escena\Generador.cs" />
+    <Compile Include="Assets\Scripts\UI\SceneController.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\DelayBomba.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\ParticleAttack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CameraFollow.cs" />
