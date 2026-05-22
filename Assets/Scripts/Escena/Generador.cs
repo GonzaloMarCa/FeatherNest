@@ -8,7 +8,6 @@ public class Generador : MonoBehaviour
     [SerializeField] private GameObject mabirroPrefab;
     [SerializeField] private float rangoActivacion = 15f;      // Rango para activar el generador
     [SerializeField] private float radioGeneracion = 5f;       // Radio donde aparecen los enemigos
-    [SerializeField] private float intervaloInicial = 2f;      // Tiempo hasta primer spawn
     [SerializeField] private float intervaloEntreSpawns = 5f;  // Tiempo entre spawns
     [SerializeField] private int maxEnemigosSimultaneos = 3;   // Máximo de enemigos vivos a la vez
     

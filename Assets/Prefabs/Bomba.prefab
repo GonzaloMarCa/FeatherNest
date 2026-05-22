@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiempoExplosion: 3
   "da\xF1o": 3
-  radioExplosion: 3.5
+  radioExplosion: 4
   efectoExplosion: {fileID: 3069408457215705971, guid: 31abba9ed5686114db98fb6ec0ef1e0b, type: 3}
   colorInicial: {r: 1, g: 1, b: 1, a: 1}
   colorFinal: {r: 1, g: 0, b: 0, a: 1}

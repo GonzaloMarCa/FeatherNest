@@ -140,7 +140,18 @@ public class Bomba : MonoBehaviour
             {
                 enemigoScript.TakeDamage(daño);
             }
+            //3. Detectar rocas dentro del grupo de enemigos
+            else
+            {
+                PiedraScript pedra = enemigo.GetComponent<PiedraScript>();
+                if(pedra != null)
+                {
+                    pedra.explotar();
+                }
+            }
         }
+
+
     }
 
 

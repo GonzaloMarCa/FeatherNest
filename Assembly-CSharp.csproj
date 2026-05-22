@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\UI\UICooldownManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\BombaScript.cs" />
+    <Compile Include="Assets\Scripts\Escena\PiedraScript.cs" />
     <Compile Include="Assets\Scripts\UI\UIhpTrack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Escena\CajaScript.cs" />
