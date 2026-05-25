@@ -49,6 +49,9 @@ public class PlayerMovement : MonoBehaviour
     private float attackTimer;
     private float attackCooldownTimer;
     private bool canAttack = true;
+
+    //Objetos usables
+    private int llaves;
     
 
     private void Awake()
@@ -351,6 +354,14 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Key"))
+        {
+            llaves ++;
+            collision.gameObject.GetComponent<LlaveScript>().DestroyKey();
+        }
+    }
 
 
     // Método público para obtener la dirección del último movimiento/ataque
@@ -429,5 +440,9 @@ public class PlayerMovement : MonoBehaviour
         return maxHealth;
     }
 
+    public int NumLlaves()
+    {
+        return llaves;
+    }
 
 }

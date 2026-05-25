@@ -59,23 +59,26 @@
     <UnityVersion>2022.3.47f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Users\6003887\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\LlaveScript.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\UI\UICooldownManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\BombaScript.cs" />
-    <Compile Include="Assets\Scripts\Escena\PiedraScript.cs" />
     <Compile Include="Assets\Scripts\UI\UIhpTrack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\Escena\CajaScript.cs" />
+    <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\PiedraScript.cs" />
     <Compile Include="Assets\Scripts\EntidadesNPC\Mabirro.cs" />
     <Compile Include="Assets\Scripts\Escena\Generador.cs" />
+    <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\CajaScript.cs" />
     <Compile Include="Assets\Scripts\UI\SceneController.cs" />
-    <Compile Include="Assets\Scripts\Escena\FuenteCuracion.cs" />
+    <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\PuertaScript.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\DelayBomba.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\ParticleAttack.cs" />
+    <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\FuenteCuracion.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
