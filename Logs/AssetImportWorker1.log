@@ -15,7 +15,7 @@ C:/Users/6003887/Documents/GitHub/FeatherNest
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-63487
+54412
 Successfully changed project path to: C:/Users/6003887/Documents/GitHub/FeatherNest
 C:/Users/6003887/Documents/GitHub/FeatherNest
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,16 +49,16 @@ C:/Users/6003887/Documents/GitHub/FeatherNest
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [30256]  Target information:
+Player connection [22692]  Target information:
 
-Player connection [30256]  * "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 3441652018 [EditorId] 3441652018 [Version] 1048832 [Id] WindowsEditor(7,GM03HF4B) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [22692]  * "[IP] 192.168.56.1 [Port] 0 [Flags] 2 [Guid] 831070380 [EditorId] 831070380 [Version] 1048832 [Id] WindowsEditor(7,GM03HF4B) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [30256]  * "[IP] 172.19.114.82 [Port] 0 [Flags] 2 [Guid] 3441652018 [EditorId] 3441652018 [Version] 1048832 [Id] WindowsEditor(7,GM03HF4B) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [22692]  * "[IP] 172.28.177.42 [Port] 0 [Flags] 2 [Guid] 831070380 [EditorId] 831070380 [Version] 1048832 [Id] WindowsEditor(7,GM03HF4B) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [30256] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [30256] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [22692] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [22692] Host joined alternative multi-casting on [225.0.0.222:34997]...
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
-Refreshing native plugins compatible for Editor in 20.97 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 29.83 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.47f1 (88c277b85d21)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/Resources/UnitySubsystems
@@ -74,44 +74,44 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56872
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56812
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.009309 seconds.
-- Loaded All Assemblies, in  0.376 seconds
+Registered in 0.012775 seconds.
+- Loaded All Assemblies, in  0.639 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.298 seconds
-Domain Reload Profiling: 672ms
-	BeginReloadAssembly (124ms)
+- Finished resetting the current domain, in  0.509 seconds
+Domain Reload Profiling: 1141ms
+	BeginReloadAssembly (182ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (33ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (63ms)
-	LoadAllAssembliesAndSetupDomain (142ms)
-		LoadAssemblies (121ms)
+	RebuildCommonClasses (58ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (106ms)
+	LoadAllAssembliesAndSetupDomain (269ms)
+		LoadAssemblies (177ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (140ms)
-			TypeCache.Refresh (138ms)
-				TypeCache.ScanAssembly (125ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
+		AnalyzeDomain (265ms)
+			TypeCache.Refresh (261ms)
+				TypeCache.ScanAssembly (235ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (299ms)
+	FinalizeReload (510ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (250ms)
+		SetupLoadedEditorAssemblies (406ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (12ms)
-			SetLoadedEditorAssemblies (10ms)
+			InitializePlatformSupportModulesInManaged (25ms)
+			SetLoadedEditorAssemblies (20ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (2ms)
-			ProcessInitializeOnLoadAttributes (171ms)
-			ProcessInitializeOnLoadMethodAttributes (55ms)
+			BeforeProcessingInitializeOnLoad (5ms)
+			ProcessInitializeOnLoadAttributes (276ms)
+			ProcessInitializeOnLoadMethodAttributes (81ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -120,50 +120,50 @@ Domain Reload Profiling: 672ms
 Worker process is ready to serve import requests
 Caller must complete domain reload
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.683 seconds
+- Loaded All Assemblies, in  1.614 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.648 seconds
-Domain Reload Profiling: 1325ms
-	BeginReloadAssembly (156ms)
+- Finished resetting the current domain, in  0.901 seconds
+Domain Reload Profiling: 2493ms
+	BeginReloadAssembly (499ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (5ms)
+		DisableScriptedObjects (19ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (21ms)
-	RebuildCommonClasses (30ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (48ms)
-	LoadAllAssembliesAndSetupDomain (433ms)
-		LoadAssemblies (376ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (93ms)
+	RebuildNativeTypeToScriptingClass (31ms)
+	initialDomainReloadingComplete (157ms)
+	LoadAllAssembliesAndSetupDomain (811ms)
+		LoadAssemblies (889ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (153ms)
-			TypeCache.Refresh (129ms)
-				TypeCache.ScanAssembly (114ms)
-			ScanForSourceGeneratedMonoScriptInfo (19ms)
-			ResolveRequiredComponents (5ms)
-	FinalizeReload (648ms)
+		AnalyzeDomain (232ms)
+			TypeCache.Refresh (192ms)
+				TypeCache.ScanAssembly (171ms)
+			ScanForSourceGeneratedMonoScriptInfo (29ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (902ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (494ms)
+		SetupLoadedEditorAssemblies (693ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (8ms)
-			SetLoadedEditorAssemblies (4ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (6ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (78ms)
-			ProcessInitializeOnLoadAttributes (350ms)
-			ProcessInitializeOnLoadMethodAttributes (36ms)
-			AfterProcessingInitializeOnLoad (17ms)
+			BeforeProcessingInitializeOnLoad (99ms)
+			ProcessInitializeOnLoadAttributes (511ms)
+			ProcessInitializeOnLoadMethodAttributes (53ms)
+			AfterProcessingInitializeOnLoad (14ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
-Refreshing native plugins compatible for Editor in 9.91 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (13ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 7.56 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4086 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 38 unused Assets / (241.1 KB). Loaded Objects now: 4565.
-Memory consumption went from 150.3 MB to 150.1 MB.
-Total: 3.923000 ms (FindLiveObjects: 0.230200 ms CreateObjectMapping: 0.129500 ms MarkObjects: 3.335500 ms  DeleteObjects: 0.226400 ms)
+Unloading 4088 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 38 unused Assets / (241.7 KB). Loaded Objects now: 4567.
+Memory consumption went from 150.4 MB to 150.1 MB.
+Total: 3.424000 ms (FindLiveObjects: 0.216100 ms CreateObjectMapping: 0.105700 ms MarkObjects: 2.925100 ms  DeleteObjects: 0.175900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -181,62 +181,96 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1824027.004508 seconds.
-  path: Assets/Prefabs/Bomba.prefab
-  artifactKey: Guid(a8b997e4aba0e0740866702cc15e8a7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Bomba.prefab using Guid(a8b997e4aba0e0740866702cc15e8a7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 1901915.762879 seconds.
+  path: Assets/Prefabs/PuertaCerrada.prefab
+  artifactKey: Guid(c01b7c37cd01c544c91056ced08c2363) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PuertaCerrada.prefab using Guid(c01b7c37cd01c544c91056ced08c2363) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '7015502d0f88e6645824bf26c11fa335') in 0.109687 seconds
+ -> (artifact id: '03ae04c73b36c422c72358a20ae125ad') in 0.087281 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 18
+Number of asset objects unloaded after import = 58
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Prefabs/Generador.prefab
-  artifactKey: Guid(ad5e66a8e84980e45b5c25eb1cda1d51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Generador.prefab using Guid(ad5e66a8e84980e45b5c25eb1cda1d51) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: 'b6ef76abc5e6a980b3813aa17c15d52f') in 0.005801 seconds
+  Time since last request: 453.989438 seconds.
+  path: Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/office_desk_6.png
+  artifactKey: Guid(5852c4e7c78770b4497c8679bdebc787) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/office_desk_6.png using Guid(5852c4e7c78770b4497c8679bdebc787) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '8986a9ef0d1ae821bfeddebcbaba07c7') in 0.042825 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 18
+Number of asset objects unloaded after import = 3
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000038 seconds.
-  path: Assets/Prefabs/HumoRoca.prefab
-  artifactKey: Guid(fe837093a16940445b9383137daede56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/HumoRoca.prefab using Guid(fe837093a16940445b9383137daede56) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 0.000037 seconds.
+  path: Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/plants_3.png
+  artifactKey: Guid(0bed79633abbd4645b47a671e70bcc07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/plants_3.png using Guid(0bed79633abbd4645b47a671e70bcc07) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '55bdd543ebca6d6ece257f8e1eb00d3b') in 0.021930 seconds
+ -> (artifact id: 'fc233a41fd19e29a3f485a92b7a32176') in 0.021905 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/plants_1.png
+  artifactKey: Guid(b6c734e634e9a2940941361974cbcedf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/plants_1.png using Guid(b6c734e634e9a2940941361974cbcedf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '0704af10ca273497cf6b0c40f835ee61') in 0.015650 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/plants_0.png
+  artifactKey: Guid(49ba705ed2f064845a5e32701ccaa7b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/plants_0.png using Guid(49ba705ed2f064845a5e32701ccaa7b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '8bfc3824852db18ebe142a6ef8726678') in 0.014426 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 1516.539725 seconds.
+  path: Assets/Sprites/pluma/pluma64Altramuz.aseprite
+  artifactKey: Guid(135fa9375144a364c866c57463be7a14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/pluma/pluma64Altramuz.aseprite using Guid(135fa9375144a364c866c57463be7a14) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '6bfa0333321eaf87252691f0b5ffa79b') in 0.029882 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 7
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/Prefabs/Caja_prefab.prefab
-  artifactKey: Guid(6dd1f8a4d69fa5348a24c9c9adc88655) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Caja_prefab.prefab using Guid(6dd1f8a4d69fa5348a24c9c9adc88655) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 0.002209 seconds.
+  path: Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/pots_1.png
+  artifactKey: Guid(0c30d2d8dadcc804eaef0c82cb0bf533) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/pots_1.png using Guid(0c30d2d8dadcc804eaef0c82cb0bf533) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '6f5716834bad605797eafee56347f85a') in 0.019949 seconds
+ -> (artifact id: '754b5895e8de766e12e0c751bd7efcca') in 0.015824 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 15
+Number of asset objects unloaded after import = 3
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Prefabs/Petardazo.prefab
-  artifactKey: Guid(31abba9ed5686114db98fb6ec0ef1e0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Petardazo.prefab using Guid(31abba9ed5686114db98fb6ec0ef1e0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Sprites/pluma/plumapaleta.ase
+  artifactKey: Guid(8e3ac51b0fb70174e9b5f2c8de8bcebc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/pluma/plumapaleta.ase using Guid(8e3ac51b0fb70174e9b5f2c8de8bcebc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
 [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '08a60d548f59f70debc6af9d50017806') in 0.012633 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 8
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Prefabs/Vida.prefab
-  artifactKey: Guid(3d646d4e019ae424f8b540b7e28174d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Vida.prefab using Guid(3d646d4e019ae424f8b540b7e28174d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
- -> (artifact id: '848201832f883f97d39c1d5af55c0a82') in 0.006987 seconds
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: '3bec47eebf86a0e05be58115b9bd9bee') in 0.023685 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/pots_3.png
+  artifactKey: Guid(cbd1fcb3904ce57449657c0035cc389a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TilesDescargados/Epic RPG World - Village(interiors) V1.3/Epic RPG World - Village(interiors) V1.3/assets/furniture_and_props_sprites/pots_3.png using Guid(cbd1fcb3904ce57449657c0035cc389a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) [PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 16 workers.
+ -> (artifact id: 'c92332eca066bcb5ab14aeff9a254de0') in 0.015726 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: La operación de E/S se anuló por una salida de subproceso o por una solicitud de aplicación.
 AssetImportWorker is now disconnected from the server

@@ -17,6 +17,7 @@ public class PuertaScript : MonoBehaviour
             PlayerMovement jugador = collision.gameObject.GetComponent<PlayerMovement>();
             if(jugador.NumLlaves() > 0)
             {
+                jugador.UsarLlaves();
                 Instantiate(puertaAbierta, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }

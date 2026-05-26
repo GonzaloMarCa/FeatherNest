@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -280,6 +281,7 @@ public class PlayerMovement : MonoBehaviour
         // No se puede dashear mientras se ataca
         if (isAttacking) return;
         
+        // Animaciones separadas del UpdateAnimations para no romper animaciones y que no se actualicen a mitad del roll
         if (animator != null)
         {
             Debug.Log("Animando dash");
@@ -315,6 +317,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float velocidadActual = movementInput.magnitude;
         
+        // Not commenting allat
         if(IsDashing())
         {
             return;
@@ -346,16 +349,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Heal(int healAmount)
     {
+        // Al ponerlo público y con healAmount dentro se puede llamar desde el objeto que haga la función de curar de forma genérica
         Debug.Log("curando");
         currentHealth += healAmount;
         currentHealth = Mathf.Min(maxHealth, currentHealth);
-        Vidas.ActualizarVidas(1);
+        Vidas.ActualizarVidas(healAmount);
         Debug.Log($"Jugador curado. Salud: {currentHealth}/{maxHealth}");
 
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // Recoge la llave, borra la llave
         if (collision.gameObject.CompareTag("Key"))
         {
             llaves ++;
@@ -383,13 +388,19 @@ public class PlayerMovement : MonoBehaviour
     }
     
 
-
-
     void Die()
     {
         Debug.Log("Jugador ha muerto");
-        // Aquí se añadirá lógica de muerte (reiniciar nivel, mostrar pantalla de game over, etc.)
-        Time.timeScale = 0; // Pausar el juego como ejemplo
+        StartCoroutine(MorirConDelay());
+    }
+
+    IEnumerator MorirConDelay()
+    {
+        // Esperar 0.2 segundos
+        yield return new WaitForSeconds(0.2f);
+        
+        // Cargar la escena con índice 2
+        SceneManager.LoadScene(2);
     }
 
 
@@ -444,5 +455,11 @@ public class PlayerMovement : MonoBehaviour
     {
         return llaves;
     }
+
+    public void UsarLlaves()
+    {
+        llaves -= 1;
+    }
+
 
 }

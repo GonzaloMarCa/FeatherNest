@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\LlaveScript.cs" />
+    <Compile Include="Assets\Scripts\EntidadesNPC\Fantasmabirro.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\UI\UICooldownManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\BombaScript.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\DelayBomba.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\ParticleAttack.cs" />
     <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\FuenteCuracion.cs" />
+    <Compile Include="Assets\Scripts\UI\UIKeyCount.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +101,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\TilesDescargados\Pixel Art Top Down - Basic v1.2.3\Changelog.txt" />
+    <None Include="Assets\Tiles\TilesDescargados\Pixel Art Top Down - Basic v1.2.3\Changelog.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
