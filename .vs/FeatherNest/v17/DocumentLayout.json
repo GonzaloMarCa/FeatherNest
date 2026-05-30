@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|c:\\users\\gokir\\documents\\github\\feathernest\\assets\\scripts\\playerscripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\assets\\scripts\\entidadesnpc\\mabirro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\entidadesnpc\\mabirro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|c:\\users\\gokir\\documents\\github\\feathernest\\assets\\scripts\\entidadesnpc\\mabirro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\entidadesnpc\\mabirro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|c:\\users\\gokir\\documents\\github\\feathernest\\assets\\scripts\\playerscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\assets\\scripts\\playerscripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerMovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAswCgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-28T09:54:02.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "CameraFollow.cs",
               "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerScripts\\CameraFollow.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\CameraFollow.cs",
@@ -34,25 +51,24 @@
               "RelativeToolTip": "Assets\\Scripts\\PlayerScripts\\CameraFollow.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T15:47:33.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T15:47:33.212Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Mabirro.cs",
               "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\EntidadesNPC\\Mabirro.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EntidadesNPC\\Mabirro.cs",
               "ToolTip": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\EntidadesNPC\\Mabirro.cs",
               "RelativeToolTip": "Assets\\Scripts\\EntidadesNPC\\Mabirro.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAgwCoAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAowHIAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T16:14:43.636Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",

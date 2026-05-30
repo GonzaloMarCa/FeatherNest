@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639082413247247637
+      ticks: 639154163084636337
     m_Hash: 1482571337
   m_LockFileStatus:
     m_FilePath: C:/Users/gokir/Documents/GitHub/FeatherNest/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639082413247247637
+      ticks: 639154163084636337
     m_Hash: 2542596192
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
