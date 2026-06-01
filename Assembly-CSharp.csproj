@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\BombaScript.cs" />
     <Compile Include="Assets\Scripts\UI\UIhpTrack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\EntidadesNPC\BalaScript.cs" />
     <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\PiedraScript.cs" />
     <Compile Include="Assets\Scripts\EntidadesNPC\Mabirro.cs" />
     <Compile Include="Assets\Scripts\Escena\Generador.cs" />

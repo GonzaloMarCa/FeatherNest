@@ -117,14 +117,10 @@ public class Bomba : MonoBehaviour
 
     void ExplosionDamage()
     {
-        Debug.Log($"=== BOMBA EXPLOTANDO ===");
-        Debug.Log($"Posición: {transform.position}");
-        Debug.Log($"Radio: {radioExplosion}");
-        
         // 1. Detectar TODOS los colliders sin filtro
         Collider2D[] todosColliders = Physics2D.OverlapCircleAll(transform.position, radioExplosion);
         
-        // Listar todos los colliders encontrados
+        // Listar todos los colliders encontrados (!!!SOLO PRUEBAS, SOLO LOS MUESTRA POR CONSOLA)
         foreach (Collider2D col in todosColliders)
         {
             Debug.Log($"  - {col.name}: Layer={LayerMask.LayerToName(col.gameObject.layer)} ({col.gameObject.layer})");
@@ -135,6 +131,12 @@ public class Bomba : MonoBehaviour
         
         foreach (Collider2D enemigo in enemigosCerca)
         {
+            FantasmaBirro fantasma = enemigo.GetComponent<FantasmaBirro>();
+            if (fantasma != null)
+            {
+                fantasma.ForzarSalirAgachado();
+                fantasma.TakeDamage(daño);
+            }
             Mabirro enemigoScript = enemigo.GetComponent<Mabirro>();
             if (enemigoScript != null)
             {

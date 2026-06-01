@@ -177,14 +177,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
         {
-            Debug.Log("¡Dash! Invulnerable al daño");
             return;
         }
         
         currentHealth -= damage;
         currentHealth = Mathf.Max(0, currentHealth); // No bajar de 0
         
-        Debug.Log($"Jugador recibió {damage} de daño. Salud: {currentHealth}/{maxHealth}");
         
         // Efecto visual de daño
         StartCoroutine(FlashRed());
@@ -248,9 +246,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
         UpdateAnimations();
-        
-        
-        Debug.Log("¡Ataque iniciado!");
     }
 
 
@@ -268,7 +263,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Instantiate(bombPrefab, new Vector2(transform.position.x, (float)transform.position.y), Quaternion.identity);
             bombCooldownTimer = bombCooldown;
-            Debug.Log("¡Bomba colocada!");
         }
         else
         {
@@ -284,7 +278,6 @@ public class PlayerMovement : MonoBehaviour
         // Animaciones separadas del UpdateAnimations para no romper animaciones y que no se actualicen a mitad del roll
         if (animator != null)
         {
-            Debug.Log("Animando dash");
             animator.SetFloat("Ataque", -1);
             animator.SetFloat("Velocidad", -1);
             animator.SetFloat("Horizontal", lastMoveDirection.x);
@@ -299,7 +292,6 @@ public class PlayerMovement : MonoBehaviour
         gameObject.layer = 6;
       
         
-        Debug.Log("¡Dash iniciado en dirección: " + lastMoveDirection);
     }
     
     void StopDash()
@@ -350,11 +342,9 @@ public class PlayerMovement : MonoBehaviour
     public void Heal(int healAmount)
     {
         // Al ponerlo público y con healAmount dentro se puede llamar desde el objeto que haga la función de curar de forma genérica
-        Debug.Log("curando");
         currentHealth += healAmount;
         currentHealth = Mathf.Min(maxHealth, currentHealth);
         Vidas.ActualizarVidas(healAmount);
-        Debug.Log($"Jugador curado. Salud: {currentHealth}/{maxHealth}");
 
     }
 

@@ -197,7 +197,6 @@ public class Mabirro : MonoBehaviour
             ApplyKnockback();   
         }
         
-        Debug.Log($"Mabirro recibió {damage} de daño. Salud restante: {currentHealth}");
         
         if (currentHealth <= 0)
         {
@@ -283,7 +282,6 @@ public class Mabirro : MonoBehaviour
             Instantiate(deathEffect, transform.position, Quaternion.identity);
         }
         
-        Debug.Log("Mabirro ha sido derrotado");
         
         // Destruir después de un pequeño retraso (para que se vea la inexistente animación)
         Destroy(gameObject, 0.5f);
@@ -303,20 +301,15 @@ public class Mabirro : MonoBehaviour
             rb.velocity = bounceDirection * moveSpeed * 0.5f;
         }
         
-        Debug.Log("comprobando si se pega con jugador");
         // Colisión con el jugador
         if (collision.gameObject.CompareTag("Player") && canAttack)
         {
-            Debug.Log("Jugador chocado");
             // Dañar al jugador
             PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
             
             if (playerMovement != null)
             {
-                // Aquí llamarías a un método TakeDamage en el jugador
                 playerMovement.TakeDamage(damageToPlayer);
-                // playerMovement.TakeDamage(damageToPlayer);
-                Debug.Log($"Mabirro atacó al jugador causando {damageToPlayer} de daño");
                 
                 // Aplicar cooldown al ataque
                 StartCoroutine(AttackCooldown());

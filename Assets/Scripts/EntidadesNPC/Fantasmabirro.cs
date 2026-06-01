@@ -5,171 +5,249 @@ using UnityEngine;
 public class FantasmaBirro : MonoBehaviour
 {
     [Header("Configuración de Estados")]
-    [SerializeField] private float tiempoTransicion = 0.5f; // Lo que tarda en cambiar entre estados
-    [SerializeField] private float distanciaAgacharse = 10f; // Cuando el jugador pasa de este rango hace el cambio a agacharse
-    [SerializeField] private float distanciaNormal = 14f; // Cuando el jugador sale de este rango se vuelve a levantar
+    [SerializeField] private float tiempoTransicion = 0.5f;
+    [SerializeField] private float distanciaAgacharse = 3f;
+    [SerializeField] private float distanciaNormal = 6f;
     
     [Header("Configuración de Movimiento")]
-    [SerializeField] private float moveSpeedNormal = 2f; // Se mueve muy lento cuando está de pie
-    [SerializeField] private float moveSpeedAgachado = 0f; // No se mueve 
+    [SerializeField] private float moveSpeedNormal = 2f;
+    [SerializeField] private float moveSpeedAgachado = 0.5f;
+    
+    [Header("Configuración de Salud")]
+    [SerializeField] private int maxHealth = 5;
+    [SerializeField] private float knockbackForce = 5f;
+    
+    [Header("Configuración de Disparo")]
+    [SerializeField] private GameObject balaPrefab;
+    [SerializeField] private Transform puntoDisparo;
+    [SerializeField] private float tiempoEntreDisparos = 2f;
+    [SerializeField] private float rangoDisparo = 8f;
+    [SerializeField] private float velocidadBala = 8f;
+    [SerializeField] private int damageToPlayer = 1;
+    
+    [Header("Efectos Visuales")]
+    [SerializeField] private GameObject deathEffect;
+    [SerializeField] private float flashDuration = 0.1f;
     
     [Header("Referencias")]
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
     private Animator animator;
     private Transform player;
-    private SpriteRenderer spriteRenderer;  // Referencia al SpriteRenderer del hijo
+    private SpriteRenderer spriteRenderer;
+    private PlayerMovement playerScript;
     
     [Header("Variables de Estado")]
-    private EstadoEnemigo estadoActual = EstadoEnemigo.Normal;  // Máquina de estados :D:D:D:D:D (Aquí no se puede usar blend tree)
+    private EstadoEnemigo estadoActual = EstadoEnemigo.Normal;
     private bool isInvulnerable = false;
     private bool enTransicion = false;
     private Vector2 direccionMovimiento;
+    private int currentHealth;
+    private bool isDead = false;
+    private bool puedeDisparar = true;
+    private Color originalColor;
     
     private enum EstadoEnemigo
     {
-        Crouching, // Transición levantado -> agachado
-        Spawn, // Transición agachado -> levantado
-        Normal, // No lo vas a adivinar
+        Crouching,
+        Spawn,
+        Normal,
         Crouch
     }
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-        // Buscar el Animator en el hijo (donde está el SpriteRenderer)
         animator = GetComponentInChildren<Animator>();
-        
-        // Buscar el SpriteRenderer en el hijo
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         
-        // Por si algo está mal configurado y falla, se avisa
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
+        
         if (animator == null)
         {
             Debug.LogError("FantasmaBirro: No se encontró Animator en los hijos");
+            return;
         }
         
-        if (spriteRenderer == null)
-        {
-            Debug.LogError("FantasmaBirro: No se encontró SpriteRenderer en los hijos");
-        }
-        
-        // Buscar al jugador
+        // Busca al jugador y recoge el script para aplicar el daño a posterior
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
             player = playerObj.transform;
+            playerScript = playerObj.GetComponent<PlayerMovement>();
         }
         
-        // Configurar estado inicial
+        // Crear punto de disparo si no existe
+        if (puntoDisparo == null)
+        {
+            GameObject punto = new GameObject("PuntoDisparo");
+            punto.transform.SetParent(transform);
+            punto.transform.localPosition = new Vector3(0.5f, 0, 0);
+            puntoDisparo = punto.transform;
+        }
+        
+        
+        // Estado inicial
+        currentHealth = maxHealth;
         estadoActual = EstadoEnemigo.Normal;
         isInvulnerable = false;
         
-        // Elegir dirección inicial aleatoria
-        CambiarDireccionAleatoria();
+        // Configurar parámetros iniciales del Animator
+        animator.SetBool("Agachado", false);
+        animator.SetBool("Andando", true);
         
-        // Actualizar animación inicial
-        ActualizarAnimacion();
+        CambiarDireccionAleatoria();
     }
     
     void Update()
     {
-        if (player == null) return;
+        if (player == null || animator == null || isDead) return;
         
-        // Mide distancia al jugador
+        // Calcular distancia al jugador
         float distanciaAlJugador = Vector2.Distance(transform.position, player.position);
-        
-        // Si está cerca se agacja
-        bool deberiaAgacharse = distanciaAlJugador < distanciaAgacharse;
         
         // Manejar cambios de estado basados en distancia
         if (!enTransicion)
         {
-            if (deberiaAgacharse && (estadoActual == EstadoEnemigo.Normal))
+            if (distanciaAlJugador < distanciaAgacharse && estadoActual == EstadoEnemigo.Normal)
             {
-                StartCoroutine(TransicionEstado(EstadoEnemigo.Crouch, EstadoEnemigo.Crouching));
+                StartCoroutine(Agacharse());
             }
-            else if (!deberiaAgacharse && (estadoActual == EstadoEnemigo.Crouching) && (distanciaAlJugador > distanciaNormal))
+            else if (distanciaAlJugador > distanciaNormal && estadoActual == EstadoEnemigo.Crouching)
             {
-                StartCoroutine(TransicionEstado(EstadoEnemigo.Spawn, EstadoEnemigo.Normal));
+                StartCoroutine(Levantarse());
             }
         }
         
-        // Maneja el movimiento según el estado actual
-        switch (estadoActual)
+        // Manejar disparo (solo cuando está normal y no en transición)
+        if (!enTransicion && !isDead && estadoActual == EstadoEnemigo.Normal)
         {
-            // Máquina de estados para el movimiento
-            case EstadoEnemigo.Crouching:
-                MoverAgachado();
-                break;
-                
-            case EstadoEnemigo.Normal:
-                MoverNormal();
-                break;
-                
-            case EstadoEnemigo.Spawn:
-            case EstadoEnemigo.Crouch:
-                break;
+            if (distanciaAlJugador <= rangoDisparo && puedeDisparar)
+            {
+                StartCoroutine(Disparar());
+            }
         }
         
-        // Aplicar movimiento
-        if (!enTransicion)
+        // Manejar el movimiento según el estado actual
+        if (!enTransicion && !isDead)
         {
-            rb.velocity = direccionMovimiento * GetVelocidadActual();
+            switch (estadoActual)
+            {
+                case EstadoEnemigo.Crouching:
+                    MoverAgachado();
+                    rb.velocity = direccionMovimiento * moveSpeedAgachado;
+                    break;
+                    
+                case EstadoEnemigo.Normal:
+                    MoverNormal();
+                    rb.velocity = direccionMovimiento * moveSpeedNormal;
+                    break;
+                    
+                default:
+                    rb.velocity = Vector2.zero;
+                    break;
+            }
         }
         else
         {
             rb.velocity = Vector2.zero;
         }
-        
-        // Actualizar animación
+
         ActualizarAnimacion();
     }
     
-
-    // LA máquina de estados (sólo para animaciones)
-    IEnumerator TransicionEstado(EstadoEnemigo estadoTransicion, EstadoEnemigo estadoDestino)
+    IEnumerator Disparar()
     {
+        
+        puedeDisparar = false;
+        
+        // Activa trigger de disparo en el Animator
+        animator.SetTrigger("Disparo");
+        
+        // Esperar un momento para que la animación comience
+        yield return new WaitForSeconds(0.1f);
+        puntoDisparo.transform.position = this.transform.position;
+        // Instancia bala si existe el prefab
+        if (balaPrefab != null && puntoDisparo != null && player != null)
+        {
+            // Calcula dirección hacia el jugador
+            Vector2 direccion = (player.position - puntoDisparo.position).normalized;
+            float posBala = 1;
+            if (player.position.x < puntoDisparo.position.x)
+            {
+                posBala = -1;
+            }
+            GameObject bala = Instantiate(balaPrefab, new Vector2(puntoDisparo.position.x + 5 * posBala, puntoDisparo.position.y), Quaternion.identity);
+           /* 
+            // Orientar la bala hacia la dirección
+            float angle = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+            bala.transform.rotation = Quaternion.Euler(0, 0, angle);
+            
+            // Aplicar velocidad a la bala (CORREGIDO, no recibía velocidad al instanciarse)
+            Rigidbody2D rbBala = bala.GetComponent<Rigidbody2D>();
+            if (rbBala != null)
+            {
+                rbBala.velocity = direccion * velocidadBala;  // ← Cambiado de linearVelocity a velocity
+            }
+            */
+            // Configurar el daño de la bala
+            BalaScript balaScript = bala.GetComponent<BalaScript>();
+            if (balaScript != null)
+            {
+                balaScript.SetDamage(damageToPlayer);
+            }
+            
+        }
+        
+        // Espera el tiempo entre disparos
+        yield return new WaitForSeconds(tiempoEntreDisparos);
+        puedeDisparar = true;
+    }
+    
+    IEnumerator Agacharse()
+    {
+        if (enTransicion || isDead) yield break;
+        
         enTransicion = true;
-        estadoActual = estadoTransicion;
+        estadoActual = EstadoEnemigo.Crouch;
         
         rb.velocity = Vector2.zero;
+        animator.SetTrigger("Crouch");
+        animator.SetBool("Andando", false);
+
         
-        // Activar animación de transición
-        if (animator != null)
-        {
-            if (estadoTransicion == EstadoEnemigo.Spawn)
-            {
-                animator.SetTrigger("Spawn");
-                Debug.Log("FantasmaBirro: Levantándose");
-            }
-            else if (estadoTransicion == EstadoEnemigo.Crouch)
-            {
-                animator.SetTrigger("Crouch");
-                Debug.Log("FantasmaBirro: Agachándose");
-            }
-        }
-        
-        // Esperar a que termine la animación
         yield return new WaitForSeconds(tiempoTransicion);
         
-        // Cambiar al estado destino
-        estadoActual = estadoDestino;
+        estadoActual = EstadoEnemigo.Crouching;
+        isInvulnerable = true;
         enTransicion = false;
         
-        // Configurar el nuevo estado
-        if (estadoDestino == EstadoEnemigo.Crouching)
-        {
-            isInvulnerable = true;
-            Debug.Log("FantasmaBirro: Agachado (Invulnerable)");
-        }
-        else if (estadoDestino == EstadoEnemigo.Normal)
-        {
-            isInvulnerable = false;
-            Debug.Log("FantasmaBirro: Normal (Vulnerable)");
-        }
+        animator.SetBool("Agachado", true);
         
-        CambiarDireccionAleatoria();
+    }
+    
+    IEnumerator Levantarse()
+    {
+        if (enTransicion || isDead) yield break;
+        
+        enTransicion = true;
+        estadoActual = EstadoEnemigo.Spawn;
+        
+        rb.velocity = Vector2.zero;
+        animator.SetTrigger("Spawn");
+        animator.SetBool("Agachado", false);
+        
+        
+        yield return new WaitForSeconds(tiempoTransicion);
+        
+        estadoActual = EstadoEnemigo.Normal;
+        isInvulnerable = false;
+        enTransicion = false;
+        
+        animator.SetBool("Andando", true);
+
     }
     
     void MoverAgachado()
@@ -203,66 +281,92 @@ public class FantasmaBirro : MonoBehaviour
             case 7: direccionMovimiento = new Vector2(-1, -1).normalized; break;
         }
         
-        // Actualizar animación de dirección en el Animator del hijo
-        if (animator != null)
-        {
-            animator.SetFloat("Horizontal", direccionMovimiento.x);
-            animator.SetFloat("Vertical", direccionMovimiento.y);
-        }
-    }
-    
-    float GetVelocidadActual()
-    {
-        switch (estadoActual)
-        {
-            case EstadoEnemigo.Crouching:
-                return moveSpeedAgachado;
-            case EstadoEnemigo.Normal:
-                return moveSpeedNormal;
-            default:
-                return 0f;
-        }
+        animator.SetFloat("Horizontal", direccionMovimiento.x);
+        animator.SetFloat("Vertical", direccionMovimiento.y);
     }
     
     void ActualizarAnimacion()
     {
-        if (animator == null) return;
+        if (animator == null || isDead) return;
+        
+        if (enTransicion) return;
         
         switch (estadoActual)
         {
             case EstadoEnemigo.Crouching:
-                animator.SetBool("IsCrouching", true);
-                animator.SetBool("IsWalking", false);
+                animator.SetBool("Agachado", true);
+                animator.SetBool("Andando", false);
                 break;
                 
             case EstadoEnemigo.Normal:
-                animator.SetBool("IsCrouching", false);
-                animator.SetBool("IsWalking", true);
-                break;
-                
-            case EstadoEnemigo.Spawn:
-            case EstadoEnemigo.Crouch:
-                animator.SetBool("IsWalking", false);
+                animator.SetBool("Agachado", false);
+                animator.SetBool("Andando", true);
                 break;
         }
-        
-        float velocidad = GetVelocidadActual();
-        animator.SetFloat("Speed", velocidad > 0.1f ? 1f : 0f);
     }
+    
+    // ========== MÉTODOS DE DAÑO Y VIDA ==========
     
     public void TakeDamage(int damage)
     {
+        if (isDead) return;
+        
         if (isInvulnerable)
         {
-            Debug.Log("FantasmaBirro está agachado - ¡Invulnerable!");
             StartCoroutine(FeedbackInvulnerable());
             return;
         }
         
         if (estadoActual == EstadoEnemigo.Normal)
         {
-            Debug.Log($"FantasmaBirro recibió {damage} de daño");
-            // Aquí implementas la lógica de vida
+            currentHealth -= damage;
+            
+            StartCoroutine(FlashRed());
+            AplicarKnockback();
+            
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                CambiarDireccionAleatoria();
+                
+                if (animator != null)
+                {
+                    animator.SetTrigger("Hurt");
+                }
+            }
+        }
+    }
+    
+    void AplicarKnockback()
+    {
+        if (player == null) return;
+        
+        Vector2 knockbackDirection = (transform.position - player.position).normalized;
+        rb.velocity = knockbackDirection * knockbackForce;
+        
+        StartCoroutine(ResetKnockback());
+    }
+    
+    IEnumerator ResetKnockback()
+    {
+        float originalSpeed = moveSpeedNormal;
+        moveSpeedNormal = 0;
+        moveSpeedAgachado = 0;
+        yield return new WaitForSeconds(0.15f);
+        moveSpeedNormal = originalSpeed;
+        moveSpeedAgachado = originalSpeed / 4f;
+    }
+    
+    IEnumerator FlashRed()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(flashDuration);
+            spriteRenderer.color = originalColor;
         }
     }
     
@@ -277,36 +381,77 @@ public class FantasmaBirro : MonoBehaviour
         }
     }
     
+    void Die()
+    {
+        isDead = true;
+        rb.velocity = Vector2.zero;
+        
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
+        
+        if (animator != null)
+        {
+            animator.SetTrigger("Death");
+        }
+        
+        if (deathEffect != null)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+        }
+        
+        Debug.Log("FantasmaBirro ha sido derrotado");
+        Destroy(gameObject, 0.5f);
+    }
+    
+    // ========== MÉTODOS PÚBLICOS ==========
+    
     public void ForzarSalirAgachado()
     {
+        if (isDead) return;
+        
         if (estadoActual == EstadoEnemigo.Crouching && !enTransicion)
         {
             StopAllCoroutines();
             enTransicion = false;
-            StartCoroutine(TransicionEstado(EstadoEnemigo.Spawn, EstadoEnemigo.Normal));
-            Debug.Log("¡Bomba! FantasmaBirro forzado a salir de agachado");
+            StartCoroutine(Levantarse());
         }
     }
     
     public void ForzarAgacharse()
     {
+        if (isDead) return;
+        
         if (estadoActual == EstadoEnemigo.Normal && !enTransicion)
         {
             StopAllCoroutines();
             enTransicion = false;
-            StartCoroutine(TransicionEstado(EstadoEnemigo.Crouch, EstadoEnemigo.Crouching));
-            Debug.Log("¡Bomba! FantasmaBirro forzado a agacharse");
+            StartCoroutine(Agacharse());
         }
     }
     
     public bool IsVulnerable()
     {
-        return !isInvulnerable && estadoActual == EstadoEnemigo.Normal;
+        return !isInvulnerable && estadoActual == EstadoEnemigo.Normal && !isDead;
     }
     
     public bool IsCrouching()
     {
         return estadoActual == EstadoEnemigo.Crouching;
+    }
+    
+    public bool IsAlive()
+    {
+        return !isDead;
+    }
+    
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+    
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
     
     void OnDrawGizmosSelected()
@@ -317,9 +462,13 @@ public class FantasmaBirro : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, distanciaNormal);
         
-        #if UNITY_EDITOR
-        UnityEditor.Handles.Label(transform.position + Vector3.up * 1f, 
-            $"Agacharse: {distanciaAgacharse}\nNormal: {distanciaNormal}");
-        #endif
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, rangoDisparo);
+        
+        if (puntoDisparo != null)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(puntoDisparo.position, 0.2f);
+        }
     }
 }
