@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Suelo
   - Key
+  - Muro
   layers:
   - Default
   - TransparentFX

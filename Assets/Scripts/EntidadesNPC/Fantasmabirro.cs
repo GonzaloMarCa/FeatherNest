@@ -45,6 +45,7 @@ public class FantasmaBirro : MonoBehaviour
     private bool isDead = false;
     private bool puedeDisparar = true;
     private Color originalColor;
+    private GameObject bala;
     
     private enum EstadoEnemigo
     {
@@ -84,7 +85,8 @@ public class FantasmaBirro : MonoBehaviour
         {
             GameObject punto = new GameObject("PuntoDisparo");
             punto.transform.SetParent(transform);
-            punto.transform.localPosition = new Vector3(0.5f, 0, 0);
+            // Ajusta la posición según dónde quieras que salga la bala
+            punto.transform.localPosition = new Vector3(0.8f, 0.2f, 0);
             puntoDisparo = punto.transform;
         }
         
@@ -160,48 +162,49 @@ public class FantasmaBirro : MonoBehaviour
     
     IEnumerator Disparar()
     {
-        
         puedeDisparar = false;
         
-        // Activa trigger de disparo en el Animator
+        // Activar trigger de disparo en el Animator
         animator.SetTrigger("Disparo");
+
         
         // Esperar un momento para que la animación comience
         yield return new WaitForSeconds(0.1f);
-        puntoDisparo.transform.position = this.transform.position;
-        // Instancia bala si existe el prefab
+        
+        // Instanciar bala si existe el prefab
         if (balaPrefab != null && puntoDisparo != null && player != null)
         {
-            // Calcula dirección hacia el jugador
+            // Calcular dirección hacia el jugador (desde el punto de disparo)
             Vector2 direccion = (player.position - puntoDisparo.position).normalized;
-            float posBala = 1;
-            if (player.position.x < puntoDisparo.position.x)
-            {
-                posBala = -1;
-            }
-            GameObject bala = Instantiate(balaPrefab, new Vector2(puntoDisparo.position.x + 5 * posBala, puntoDisparo.position.y), Quaternion.identity);
-           /* 
-            // Orientar la bala hacia la dirección
-            float angle = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
-            bala.transform.rotation = Quaternion.Euler(0, 0, angle);
+
             
-            // Aplicar velocidad a la bala (CORREGIDO, no recibía velocidad al instanciarse)
-            Rigidbody2D rbBala = bala.GetComponent<Rigidbody2D>();
-            if (rbBala != null)
+
+            if(direccion.x < 0)
             {
-                rbBala.velocity = direccion * velocidadBala;  // ← Cambiado de linearVelocity a velocity
+                bala = Instantiate(balaPrefab, puntoDisparo.position, Quaternion.identity);
             }
-            */
-            // Configurar el daño de la bala
+            else
+            {
+                bala = Instantiate(balaPrefab,new Vector2(puntoDisparo.position.x + 6.5f, puntoDisparo.position.y), Quaternion.identity);
+            }
+            // Instanciar la bala en la posición del punto de disparo
+            
+            // Rotar la bala para que apunte en la dirección correcta
+            float angle = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+            bala.transform.rotation = Quaternion.Euler(0, -90, angle);
+            
+            // Configurar la bala
             BalaScript balaScript = bala.GetComponent<BalaScript>();
             if (balaScript != null)
             {
+                balaScript.SetVelocidad(velocidadBala);
+                balaScript.SetDireccion(direccion);
                 balaScript.SetDamage(damageToPlayer);
             }
             
         }
         
-        // Espera el tiempo entre disparos
+        // Esperar el tiempo entre disparos
         yield return new WaitForSeconds(tiempoEntreDisparos);
         puedeDisparar = true;
     }

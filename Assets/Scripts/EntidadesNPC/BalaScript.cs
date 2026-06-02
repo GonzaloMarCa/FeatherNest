@@ -9,21 +9,37 @@ public class BalaScript : MonoBehaviour
     [SerializeField] private float lifetime = 3f;
     [SerializeField] private float velocidad = 8f;
     
+    [Header("Efectos")]
+    [SerializeField] private GameObject impactoEffect;
+    [SerializeField] private AudioClip impactoAudio;
     
     private Rigidbody2D rb;
     private Vector2 direccion;
+    private bool direccionConfigurada = false;
+    
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        direccion = new Vector2(transform.rotation.x, transform.rotation.y);
-        // Aplica velocidad
+        // Si por algún motivo no se configuró la dirección, usar derecha por defecto
+        if (!direccionConfigurada)
+        {
+            direccion = Vector2.right;
+            direccionConfigurada = true;
+        }
+        
+        // Aplicar velocidad
         if (rb != null)
         {
             rb.velocity = direccion * velocidad;
+            rb.gravityScale = 0;
+            Debug.Log($"Bala iniciada - Dirección: {direccion}, Velocidad: {velocidad}");
         }
         
-        // Destruye la bala después de un tiempo
+        // Destruir la bala después de un tiempo
         Destroy(gameObject, lifetime);
     }
     
@@ -33,25 +49,27 @@ public class BalaScript : MonoBehaviour
         if (rb != null && rb.velocity.magnitude > 0.1f)
         {
             float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.Euler(0, 0, angle + 90);
         }
     }
     
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D objeto)
     {
+        Debug.Log($"Bala impactó con: {objeto.tag}");
+        
         // Si impacta con el jugador
-        if (other.CompareTag("Player"))
+        if (objeto.CompareTag("Player"))
         {
-            PlayerMovement player = other.GetComponent<PlayerMovement>();
+            PlayerMovement player = objeto.GetComponent<PlayerMovement>();
             if (player != null)
             {
                 player.TakeDamage(damage);
+                Debug.Log($"Bala golpeó al jugador - Daño: {damage}");
             }
-            
             Impacto();
         }
         // Si impacta con una pared, muro o suelo
-        else if (other.CompareTag("Wall") || other.CompareTag("Suelo") || other.CompareTag("Obstacle"))
+        else if (objeto.CompareTag("Muro") || objeto.CompareTag("Suelo") || objeto.CompareTag("Untagged"))
         {
             Impacto();
         }
@@ -59,19 +77,33 @@ public class BalaScript : MonoBehaviour
     
     void Impacto()
     {
-        // Destruye la bala
+        // Efecto visual
+        if (impactoEffect != null)
+        {
+            Instantiate(impactoEffect, transform.position, Quaternion.identity);
+        }
+        
+        // Efecto de sonido
+        if (impactoAudio != null)
+        {
+            AudioSource.PlayClipAtPoint(impactoAudio, transform.position);
+        }
+        
+        // Destruir la bala
         Destroy(gameObject);
     }
     
-    // Método para triangular la dirección desde el enemigo
+    // Método para establecer la dirección desde el enemigo
     public void SetDireccion(Vector2 nuevaDireccion)
     {
         direccion = nuevaDireccion.normalized;
+        direccionConfigurada = true;
+        Debug.Log($"SetDireccion llamado: {direccion}");
         
-        // Aplica velocidad si el Rigidbody ya existe
+        // Aplicar velocidad si el Rigidbody ya existe
         if (rb != null)
         {
-            rb.velocity = direccion * velocidad;
+            rb.velocity = new Vector2(direccion.x, direccion.y) * velocidad;
         }
     }
     
@@ -85,7 +117,7 @@ public class BalaScript : MonoBehaviour
     public void SetVelocidad(float newVelocidad)
     {
         velocidad = newVelocidad;
-        if (rb != null)
+        if (rb != null && direccionConfigurada)
         {
             rb.velocity = direccion * velocidad;
         }
