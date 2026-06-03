@@ -72,11 +72,15 @@ public class AttackHitbox : MonoBehaviour
     
     void ApplyDamage(GameObject enemy)
     {
+        CornSpawnVidas generador = enemy.GetComponent<CornSpawnVidas>();
+        if (generador != null)
+        {
+            generador.TakeDamage(damage);
+        }
         Mabirro enemyScript = enemy.GetComponent<Mabirro>();
         if (enemyScript != null)
         {
             enemyScript.TakeDamage(damage);
-            Debug.Log($"Ataque golpeó a {enemy.name} - Daño: {damage}");
         }
     }
     
@@ -84,6 +88,11 @@ public class AttackHitbox : MonoBehaviour
     {
         if (damagedEnemies.Contains(other.gameObject)) return;
         
+        CornSpawnVidas generador = other.GetComponent<CornSpawnVidas>();
+        if (generador != null)
+        {
+            generador.TakeDamage(damage);
+        }
         Mabirro enemy = other.GetComponent<Mabirro>();
         if (enemy != null)
         {

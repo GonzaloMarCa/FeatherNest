@@ -131,6 +131,11 @@ public class Bomba : MonoBehaviour
         
         foreach (Collider2D enemigo in enemigosCerca)
         {
+            CornSpawnVidas generador = enemigo.GetComponent<CornSpawnVidas>();
+            if (generador != null)
+            {
+                generador.TakeDamage(daño);
+            }
             FantasmaBirro fantasma = enemigo.GetComponent<FantasmaBirro>();
             if (fantasma != null)
             {
