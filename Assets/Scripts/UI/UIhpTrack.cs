@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -92,7 +93,7 @@ public class UIhpTrack : MonoBehaviour
                 {
                     if (animarPerdida)
                     {
-                        StartCoroutine(AnimarPerdidaPluma(plumasList[i]));
+                        StartCoroutine(AnimarPerdidaPluma(plumasList[i], vidasPerdidas > 0));
                     }
                     else
                     {
@@ -117,7 +118,7 @@ public class UIhpTrack : MonoBehaviour
         currentLives = nuevasVidas;
     }
     
-    IEnumerator AnimarPerdidaPluma(GameObject pluma)
+    IEnumerator AnimarPerdidaPluma(GameObject pluma, Boolean animar)
     {
         Image img = pluma.GetComponent<Image>();
         RectTransform rect = pluma.GetComponent<RectTransform>();
@@ -131,7 +132,11 @@ public class UIhpTrack : MonoBehaviour
         {
             tiempo += Time.deltaTime;
             float t = tiempo / (animacionDuracion / 2);
-            rect.localScale = escalaOriginal * (1 + (1 - t) * 0.4f);
+            if (!animar)
+            {
+                 rect.localScale = escalaOriginal * (1 + (1 - t) * 0.4f);
+            }
+           
             yield return null;
         }
         
@@ -150,7 +155,10 @@ public class UIhpTrack : MonoBehaviour
         {
             tiempo += Time.deltaTime;
             float t = tiempo / (animacionDuracion / 2);
-            rect.localScale = escalaOriginal;
+            if (!animar)
+            {
+                rect.localScale = escalaOriginal;
+            }
             yield return null;
         }
         

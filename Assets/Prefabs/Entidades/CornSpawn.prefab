@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4892120881212135131}
   - component: {fileID: 4697247437390594347}
+  - component: {fileID: 9222510251089054993}
   - component: {fileID: 6900706073344699515}
   - component: {fileID: 525549275237873427}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CornSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,6 +53,23 @@ MonoBehaviour:
   radioGeneracion: 5
   intervaloEntreSpawns: 5
   maxEnemigosSimultaneos: 3
+--- !u!114 &9222510251089054993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342616831604925205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e95a356337eb714d97700efa29cb7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  damageToPlayer: 0
+  knockbackForce: 5
+  flashDuration: 0.1
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!50 &6900706073344699515
 Rigidbody2D:
   serializedVersion: 4
@@ -60,7 +78,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342616831604925205}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -135,7 +153,7 @@ GameObject:
   - component: {fileID: 2631049055196318273}
   - component: {fileID: 7832138407943264352}
   - component: {fileID: 824882057425439345}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

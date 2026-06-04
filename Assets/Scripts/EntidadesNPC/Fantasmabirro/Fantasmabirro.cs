@@ -26,8 +26,12 @@ public class FantasmaBirro : MonoBehaviour
     [SerializeField] private int damageToPlayer = 1;
     
     [Header("Efectos Visuales")]
-    [SerializeField] private GameObject deathEffect;
     [SerializeField] private float flashDuration = 0.1f;
+
+    [Header("Escudo")]
+    [SerializeField] private GameObject escudoPrefab;  // Prefab del escudo
+    [SerializeField] private Transform puntoEscudo;    // Donde aparece el escudo
+    private GameObject escudoActual;                   // Referencia al escudo activo
     
     [Header("Referencias")]
     private Rigidbody2D rb;
@@ -397,10 +401,6 @@ public class FantasmaBirro : MonoBehaviour
             animator.SetTrigger("Death");
         }
         
-        if (deathEffect != null)
-        {
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
-        }
         
         Debug.Log("FantasmaBirro ha sido derrotado");
         Destroy(gameObject, 0.5f);
@@ -414,9 +414,40 @@ public class FantasmaBirro : MonoBehaviour
         
         if (estadoActual == EstadoEnemigo.Crouching && !enTransicion)
         {
+            
+            MostrarEscudo();
+            
             StopAllCoroutines();
             enTransicion = false;
             StartCoroutine(Levantarse());
+            Debug.Log("¡Bomba! FantasmaBirro forzado a salir de agachado");
+        }
+    }
+    // Este no es público pero va enlazado al anterior, no voy a moverlo
+    void MostrarEscudo()
+    {
+        if (escudoPrefab != null)
+        {
+            // Determina la posición donde aparecerá el escudo
+            Vector3 posicionEscudo = puntoEscudo != null ? puntoEscudo.position : transform.position;
+            
+            // Para luego crearlo
+            if (escudoActual != null)
+            {
+                Destroy(escudoActual);
+            }
+            
+            escudoActual = Instantiate(escudoPrefab, posicionEscudo, Quaternion.identity, transform);
+            
+            // Activa la "animación" del escudo
+            Escudo escudoScript = escudoActual.GetComponent<Escudo>();
+            if (escudoScript != null)
+            {
+                escudoScript.MostrarEscudo();
+            }
+            
+            // y al final lo rompe para no dejar objetos vacíos
+            Destroy(escudoActual, 1f);
         }
     }
     

@@ -131,6 +131,11 @@ public class Bomba : MonoBehaviour
         
         foreach (Collider2D enemigo in enemigosCerca)
         {
+            CornSpawnVidas generador = enemigo.GetComponent<CornSpawnVidas>();
+            if (generador != null)
+            {
+                generador.TakeDamage(daño);
+            }
             FantasmaBirro fantasma = enemigo.GetComponent<FantasmaBirro>();
             if (fantasma != null)
             {
@@ -142,7 +147,7 @@ public class Bomba : MonoBehaviour
             {
                 enemigoScript.TakeDamage(daño);
             }
-            //3. Detectar rocas dentro del grupo de enemigos
+            //3. Detectar rocas dentro del grupo de enemigos (las paredes rompibles usan el mismo script)
             else
             {
                 PiedraScript pedra = enemigo.GetComponent<PiedraScript>();

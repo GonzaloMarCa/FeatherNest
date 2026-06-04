@@ -61,13 +61,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\LlaveScript.cs" />
-    <Compile Include="Assets\Scripts\EntidadesNPC\Fantasmabirro.cs" />
+    <Compile Include="Assets\Scripts\EntidadesNPC\CornSpawnVidas.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\AttackHitbox.cs" />
     <Compile Include="Assets\Scripts\UI\UICooldownManager.cs" />
+    <Compile Include="Assets\Scripts\EntidadesNPC\Fantasmabirro\Escudo.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\BombaScript.cs" />
     <Compile Include="Assets\Scripts\UI\UIhpTrack.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\EntidadesNPC\BalaScript.cs" />
+    <Compile Include="Assets\Scripts\EntidadesNPC\Fantasmabirro\Fantasmabirro.cs" />
     <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\PiedraScript.cs" />
     <Compile Include="Assets\Scripts\EntidadesNPC\Mabirro.cs" />
     <Compile Include="Assets\Scripts\Escena\Generador.cs" />
@@ -75,10 +76,12 @@
     <Compile Include="Assets\Scripts\UI\SceneController.cs" />
     <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\PuertaScript.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\Bomba\DelayBomba.cs" />
+    <Compile Include="Assets\Scripts\Escena\Fin.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\ParticleAttack.cs" />
     <Compile Include="Assets\Scripts\Escena\ObjetosInteractuables\FuenteCuracion.cs" />
     <Compile Include="Assets\Scripts\UI\UIKeyCount.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\EntidadesNPC\Fantasmabirro\BalaScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
