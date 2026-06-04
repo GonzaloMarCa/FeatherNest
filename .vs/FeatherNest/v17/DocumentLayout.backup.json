@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|c:\\users\\gokir\\documents\\github\\feathernest\\assets\\scripts\\escena\\objetosinteractuables\\cajascript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\escena\\objetosinteractuables\\cajascript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|c:\\users\\gokir\\documents\\github\\feathernest\\assets\\scripts\\playerscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|c:\\users\\gokir\\documents\\github\\feathernest\\assets\\scripts\\entidadesnpc\\fantasmabirro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D033BD80-E5CF-2076-CFBE-C7F785451DB2}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\entidadesnpc\\fantasmabirro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerMovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\PlayerMovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CajaScript.cs",
+              "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\Escena\\ObjetosInteractuables\\CajaScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Escena\\ObjetosInteractuables\\CajaScript.cs",
+              "ToolTip": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\Escena\\ObjetosInteractuables\\CajaScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Escena\\ObjetosInteractuables\\CajaScript.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T09:03:34.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerScripts\\PlayerMovement.cs",
+              "ViewState": "AgIAAK4BAAAAAAAAAADwvykBAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T08:37:31.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Fantasmabirro.cs",
+              "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\EntidadesNPC\\Fantasmabirro.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EntidadesNPC\\Fantasmabirro.cs",
+              "ToolTip": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\EntidadesNPC\\Fantasmabirro.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EntidadesNPC\\Fantasmabirro.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAkwMIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-03T06:24:52.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\gokir\\Documents\\GitHub\\FeatherNest\\Assets\\Scripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T18:25:11.108Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
