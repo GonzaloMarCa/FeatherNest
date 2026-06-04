@@ -3,8 +3,8 @@ using UnityEngine;
 public class CajaScript : MonoBehaviour
 {
     [Header("Configuración")]
-    [SerializeField] private float masa = 1f;
-    [SerializeField] private float fuerzaEmpuje = 10f;
+    [SerializeField] private float masa = 200f;
+    [SerializeField] private float fuerzaEmpuje = 1f;
     
     private Rigidbody2D rb;
     private bool siendoEmpujada = false;
@@ -40,7 +40,7 @@ public class CajaScript : MonoBehaviour
             else if (tiempoSinEmpuje > 0.2f)
             {
                 // Frenado progresivo (queda guapo)
-                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, Time.fixedDeltaTime * 10f);
+                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, Time.fixedDeltaTime * 5f);
             }
         }
         

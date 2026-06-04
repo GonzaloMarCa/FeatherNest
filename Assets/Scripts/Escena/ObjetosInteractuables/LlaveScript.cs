@@ -10,11 +10,4 @@ public class LlaveScript : MonoBehaviour
         Destroy(this.gameObject);
     }
     
-    
-    /* Hover de la llave pendiente
-    void Update()
-    {
-        Posicion.position.y += 0.25;
-    }
-    */
 }

@@ -377,6 +377,7 @@
 "Assets/Scripts/EntidadesNPC/Fantasmabirro/Escudo.cs"
 "Assets/Scripts/EntidadesNPC/Fantasmabirro/Fantasmabirro.cs"
 "Assets/Scripts/EntidadesNPC/Mabirro.cs"
+"Assets/Scripts/Escena/Fin.cs"
 "Assets/Scripts/Escena/Generador.cs"
 "Assets/Scripts/Escena/ObjetosInteractuables/CajaScript.cs"
 "Assets/Scripts/Escena/ObjetosInteractuables/FuenteCuracion.cs"

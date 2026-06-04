@@ -378,7 +378,7 @@ public class PlayerMovement : MonoBehaviour
     }
     
 
-    void Die()
+    public void Die()
     {
         Debug.Log("Jugador ha muerto");
         StartCoroutine(MorirConDelay());
